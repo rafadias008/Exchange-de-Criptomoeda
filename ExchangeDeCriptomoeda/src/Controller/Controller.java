@@ -52,6 +52,10 @@ public class Controller {
                 
                 PU.setVisible(true);
                 
+                PU.getInforUser().setText("Nome: " +nome +
+                                              "\n\nCPF: " + cpf);
+                
+                
                 
             } else {
                 JOptionPane.showMessageDialog(login, "Login não efetuado!");

@@ -23,31 +23,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="textInforUser" min="-2" pref="258" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btConsulSaldo" alignment="1" max="32767" attributes="0"/>
-                          <Component id="btDepositar" alignment="1" max="32767" attributes="0"/>
-                          <Component id="btConsulExtrato" alignment="1" max="32767" attributes="0"/>
-                          <Component id="btSacar" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="105" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btSair" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btAtualizarCota" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btVenderCripto" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btComprarCripto" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -61,6 +36,31 @@
                   </Group>
               </Group>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="176" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btConsulSaldo" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btDepositar" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btConsulExtrato" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btSacar" alignment="0" pref="157" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="105" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btSair" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btAtualizarCota" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btVenderCripto" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btComprarCripto" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -70,9 +70,19 @@
               <Component id="jLabel4" min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="textInforUser" min="-2" pref="91" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace min="51" max="32767" attributes="0"/>
+                      <Component id="btComprarCripto" min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btVenderCripto" min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btAtualizarCota" min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btSair" min="-2" pref="33" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btConsulSaldo" min="-2" pref="33" max="-2" attributes="0"/>
@@ -83,16 +93,6 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btSacar" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btComprarCripto" min="-2" pref="33" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btVenderCripto" min="-2" pref="33" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btAtualizarCota" min="-2" pref="33" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btSair" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
@@ -138,14 +138,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Exchange de Criptomoedas"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="textInforUser">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;s do usuario"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textInforUserActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btConsulExtrato">
       <Properties>
@@ -204,5 +196,32 @@
         <Property name="text" type="java.lang.String" value="Comprar Criptomoeda"/>
       </Properties>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextPane" name="inforUser">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder>
+                  <Color PropertyName="highlightOuter" blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color PropertyName="highlightInner" blue="0" green="66" red="ff" type="rgb"/>
+                  <Color PropertyName="shadowOuter" blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color PropertyName="shadowInner" blue="0" green="66" red="ff" type="rgb"/>
+                </BevelBorder>
+              </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tw Cen MT" size="14" style="1"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

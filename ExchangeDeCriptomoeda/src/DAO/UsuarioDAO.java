@@ -37,16 +37,6 @@ public class UsuarioDAO {
         
     }
     
-//    public void createdUser(Usuario user) throws SQLException{
-//        
-//        String sql = "insert into usuarios (nome,cpf,senha) values (?,?,?)";
-//        
-//        System.out.println(sql);
-//        
-//        PreparedStatement statement = conn.prepareStatement(sql);
-//        statement.setString(1,user.get());
-//        statement.setString(2, user.getUsuario());
-//        statement.execute();
-//        conn.close();
-//    }
+    
+    
 }
