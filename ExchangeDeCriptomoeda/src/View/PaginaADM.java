@@ -56,6 +56,11 @@ public class PaginaADM extends javax.swing.JFrame {
 
         btCadsCripto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btCadsCripto.setText("Cadastrar Criptomoeda");
+        btCadsCripto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadsCriptoActionPerformed(evt);
+            }
+        });
 
         btExcluirCripto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btExcluirCripto.setText("Excluir Criptomoeda");
@@ -175,6 +180,12 @@ public class PaginaADM extends javax.swing.JFrame {
         
         CI.setVisible(true);
     }//GEN-LAST:event_btCadsInvestActionPerformed
+
+    private void btCadsCriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadsCriptoActionPerformed
+        CadastroCripto CC = new CadastroCripto();
+        
+        CC.setVisible(true);
+    }//GEN-LAST:event_btCadsCriptoActionPerformed
 
 //    /**
 //     * @param args the command line arguments

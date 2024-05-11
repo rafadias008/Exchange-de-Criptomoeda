@@ -10,7 +10,11 @@ package Model;
  */
 public class Usuario {
     
-    private String nome, cpf,senha;
+    private String nome, cpf,senha,cripto;
+
+    public Usuario() {
+    }
+    
     
 
     public Usuario(String nome, String cpf, String senha) {
@@ -18,6 +22,11 @@ public class Usuario {
         this.cpf = cpf;
         this.senha = senha;
     }
+
+    public Usuario(String cripto) {
+        this.cripto = cripto;
+    }
+    
     
 
     public String getNome() {
@@ -44,6 +53,18 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public String getCripto() {
+        return cripto;
+    }
+
+    public void setCripto(String cripto) {
+        this.cripto = cripto;
+    }
+
+    
+    
+    
+    
     @Override
     public String toString() {
         return "Usuario{" + "nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + '}';

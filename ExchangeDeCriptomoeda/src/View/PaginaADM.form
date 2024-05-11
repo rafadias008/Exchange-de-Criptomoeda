@@ -140,6 +140,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar Criptomoeda"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCadsCriptoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btExcluirCripto">
           <Properties>
