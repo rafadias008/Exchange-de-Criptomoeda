@@ -12,6 +12,7 @@ import DAO.Conexao;
 import DAO.UsuarioDAO;
 import Model.Usuario;
 import View.CadastroInvest;
+import View.DeletaInvest;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,6 +28,7 @@ public class ControllerADM {
     public LoginADM loginADM;
     
     public CadastroInvest CadInvest;
+    public DeletaInvest DelInvest;
     
     public ControllerADM(LoginADM loginADM){
         this.loginADM = loginADM;
@@ -35,6 +37,10 @@ public class ControllerADM {
     
     public ControllerADM(CadastroInvest CadInvest){
         this.CadInvest = CadInvest;
+    }
+    
+    public ControllerADM(DeletaInvest DelInvest){
+        this.DelInvest = DelInvest;
     }
     
     public void btLoginADM(){
@@ -94,5 +100,9 @@ public class ControllerADM {
             JOptionPane.showMessageDialog(CadInvest, "Erro de conexão!");
         }
     
+    }
+    
+    public void btDeletarInvest(){
+        
     }
 }

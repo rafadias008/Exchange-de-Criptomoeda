@@ -44,7 +44,8 @@ public class CadastroInvest extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
         btCadastrarIn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CADASTRO DE INVESTIDOR");
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblNome.setText("Nome:");

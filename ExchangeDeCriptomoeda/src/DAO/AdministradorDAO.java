@@ -51,4 +51,17 @@ public class AdministradorDAO {
         conn.close();
          
     }
+    
+    public void deletarInvest(Usuario usuario) throws SQLException{
+        
+        String sql = "delete from usuarios where cpf = ?";
+        
+        System.out.println(sql);
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, usuario.getCpf());
+        
+        statement.execute();
+        conn.close();
+    }
 }
