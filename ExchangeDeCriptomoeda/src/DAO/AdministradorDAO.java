@@ -67,12 +67,22 @@ public class AdministradorDAO {
     
     public void criarCripto(Usuario usuario) throws SQLException{
         
-        String sql = "alter table usuarios add ? double precision not null default 0;";
+        String sql = "alter table usuarios add "+usuario.getCripto() +" double precision not null default 0";
         
         System.out.println(sql);
         
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1,usuario.getCripto());
+        statement.execute();
+        conn.close();
+    }
+    
+    public void DeletarCripto(Usuario usuario) throws SQLException{
+        
+        String sql = "alter table usuarios drop column "+usuario.getCripto();
+        
+        System.out.println(sql);
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
         statement.execute();
         conn.close();
     }

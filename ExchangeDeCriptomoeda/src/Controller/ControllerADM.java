@@ -9,17 +9,17 @@ import DAO.AdministradorDAO;
 import Model.Administrador;
 import View.LoginADM;
 import DAO.Conexao;
-import DAO.UsuarioDAO;
 import Model.Usuario;
 import View.CadastroCripto;
 import View.CadastroInvest;
 import View.DeletaInvest;
+import View.DeletarCripto;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import View.PaginaADM;
-import View.PaginaUser;
+
 /**
  *
  * @author rafae
@@ -31,10 +31,10 @@ public class ControllerADM {
     public CadastroInvest CadInvest;
     public DeletaInvest DelInvest;
     public CadastroCripto CadCripto;
+    public DeletarCripto DelCripto;
     
     public ControllerADM(LoginADM loginADM){
-        this.loginADM = loginADM;
-        
+        this.loginADM = loginADM;     
     }
     
     public ControllerADM(CadastroInvest CadInvest){
@@ -47,6 +47,10 @@ public class ControllerADM {
     
     public ControllerADM(CadastroCripto CadCripto){
         this.CadCripto = CadCripto;
+    }
+    
+    public ControllerADM(DeletarCripto DelCripto){
+        this.DelCripto = DelCripto;
     }
     
     public void btLoginADM(){
@@ -150,6 +154,33 @@ public class ControllerADM {
             
         }catch(SQLException e){
             JOptionPane.showMessageDialog(CadCripto, "Erro de conexão!");
+            
+            System.out.println(e);
         }
+    }
+    
+    public void btDeletarCripto(){
+        
+        Usuario user = new Usuario(DelCripto.getTxtNomeCripto().getText());
+        
+        Conexao conexao = new Conexao();
+        
+        try{
+            Connection conn  = conexao.getConnection();
+            System.out.println("conectou");
+            AdministradorDAO dao = new AdministradorDAO(conn);
+            System.out.println("criou dao");
+            dao.DeletarCripto(user);
+            
+            
+            JOptionPane.showMessageDialog(DelCripto, "Criptomoeda deletada!");
+                
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(DelCripto, "Erro de conexão!");
+            
+            System.out.println(e);
+        }
+        
     }
 }
