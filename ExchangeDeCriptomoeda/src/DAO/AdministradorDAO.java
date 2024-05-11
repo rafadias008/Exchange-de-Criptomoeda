@@ -5,6 +5,7 @@
 package DAO;
 
 import Model.Administrador;
+import Model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,5 +36,19 @@ public class AdministradorDAO {
         ResultSet resultado = statement.executeQuery();
         return resultado;
         
+    }
+    
+    //funcionando
+    public void createdInvest(Usuario usuario)throws SQLException{
+        
+        String sql = "insert into usuarios(nome,cpf,senha) values (?,?,?)";
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,usuario.getNome());
+        statement.setString(2, usuario.getCpf());
+        statement.setString(3,usuario.getSenha());
+        statement.execute();
+        conn.close();
+         
     }
 }

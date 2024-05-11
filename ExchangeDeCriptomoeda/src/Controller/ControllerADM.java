@@ -9,11 +9,15 @@ import DAO.AdministradorDAO;
 import Model.Administrador;
 import View.LoginADM;
 import DAO.Conexao;
+import DAO.UsuarioDAO;
+import Model.Usuario;
+import View.CadastroInvest;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import View.PaginaADM;
+import View.PaginaUser;
 /**
  *
  * @author rafae
@@ -22,9 +26,15 @@ public class ControllerADM {
     
     public LoginADM loginADM;
     
+    public CadastroInvest CadInvest;
+    
     public ControllerADM(LoginADM loginADM){
         this.loginADM = loginADM;
         
+    }
+    
+    public ControllerADM(CadastroInvest CadInvest){
+        this.CadInvest = CadInvest;
     }
     
     public void btLoginADM(){
@@ -60,5 +70,29 @@ public class ControllerADM {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(loginADM, "Erro de conexão!");
         }
+    }
+    
+    public void btCreatedInvest(){
+        
+        Usuario user = new Usuario(CadInvest.getTxtNome().getText(),CadInvest.getTxtCpf().getText(),
+                              CadInvest.getTxtSenha().getText());
+        
+        Conexao conexao = new Conexao();
+        
+        try{
+            Connection conn  = conexao.getConnection();
+            System.out.println("conectou");
+            AdministradorDAO dao = new AdministradorDAO(conn);
+            System.out.println("criou dao");
+            dao.createdInvest(user);
+            
+            
+            JOptionPane.showMessageDialog(CadInvest, "Investidor Criado");
+                
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(CadInvest, "Erro de conexão!");
+        }
+    
     }
 }

@@ -174,7 +174,9 @@ public class PaginaADM extends javax.swing.JFrame {
     }//GEN-LAST:event_textInforUserActionPerformed
 
     private void btCadsInvestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadsInvestActionPerformed
-        // TODO add your handling code here:
+        CadastroInvest CI = new CadastroInvest();
+        
+        CI.setVisible(true);
     }//GEN-LAST:event_btCadsInvestActionPerformed
 
 //    /**
