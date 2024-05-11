@@ -104,5 +104,24 @@ public class ControllerADM {
     
     public void btDeletarInvest(){
         
+        Usuario user = new Usuario(null,DelInvest.getTxtCpf().getText(),
+                              null);
+        
+        Conexao conexao = new Conexao();
+        
+        try{
+            Connection conn  = conexao.getConnection();
+            System.out.println("conectou");
+            AdministradorDAO dao = new AdministradorDAO(conn);
+            System.out.println("criou dao");
+            dao.deletarInvest(user);
+            
+            
+            JOptionPane.showMessageDialog(CadInvest, "Investidor Deletado!");
+                
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(CadInvest, "Erro de conexão!");
+        }
     }
 }
