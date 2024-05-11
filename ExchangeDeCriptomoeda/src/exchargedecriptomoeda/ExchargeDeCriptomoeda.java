@@ -4,6 +4,8 @@
  */
 package exchargedecriptomoeda;
 
+import View.CadastroCripto;
+import View.CadastroInvest;
 import View.Login;
 
 /**
@@ -19,6 +21,10 @@ public class ExchargeDeCriptomoeda {
         Login login = new Login();
         
         login.setVisible(true);
+        
+        CadastroInvest cp = new CadastroInvest();
+        
+        cp.setVisible(true);
     }
     
 }
