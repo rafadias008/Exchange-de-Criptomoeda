@@ -82,9 +82,9 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(255, 102, 0));
         jLabel3.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("SENHA:");
+        jLabel3.setText("Senha:");
 
-        btLogin.setBackground(new java.awt.Color(204, 204, 204));
+        btLogin.setBackground(new java.awt.Color(255, 255, 255));
         btLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btLogin.setForeground(new java.awt.Color(0, 0, 0));
         btLogin.setText("LOGIN");
