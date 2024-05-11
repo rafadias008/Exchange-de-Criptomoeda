@@ -52,7 +52,7 @@ public class PaginaUser extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(255, 102, 51));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 102, 0));
-        jLabel4.setText("Excharge de Criptomoedas");
+        jLabel4.setText("Exchange de Criptomoedas");
 
         textInforUser.setText("Informaçõs do usuario");
         textInforUser.addActionListener(new java.awt.event.ActionListener() {

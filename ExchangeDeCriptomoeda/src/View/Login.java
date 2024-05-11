@@ -99,7 +99,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 38)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Excharge de Criptomoedas");
+        jLabel4.setText("Exchange de Criptomoedas");
 
         loginSenha.setBorder(null);
         loginSenha.setSelectedTextColor(new java.awt.Color(0, 0, 0));
