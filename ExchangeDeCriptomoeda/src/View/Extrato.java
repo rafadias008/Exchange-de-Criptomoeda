@@ -161,7 +161,7 @@ public class Extrato extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        ConsultaSaldo consultaSaldo = new ConsultaSaldo();
+        ConsultaSaldoADM consultaSaldo = new ConsultaSaldoADM();
 
         consultaSaldo.setVisible(true);
         dispose();
