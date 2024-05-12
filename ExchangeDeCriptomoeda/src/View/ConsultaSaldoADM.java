@@ -57,12 +57,18 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         lblUsuario.setBackground(new java.awt.Color(255, 255, 255));
         lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setText("CPF:");
 
+        btConsultaSaldo.setBackground(new java.awt.Color(255, 255, 255));
         btConsultaSaldo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btConsultaSaldo.setForeground(new java.awt.Color(0, 0, 0));
         btConsultaSaldo.setText("Consultar Saldo");
         btConsultaSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +83,17 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
         jLabel2.setText("Consultar Saldo");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        txtCpf.setBackground(new java.awt.Color(51, 51, 51));
+        txtCpf.setForeground(new java.awt.Color(255, 255, 255));
+        txtCpf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(157, 157, 157)));
+        txtCpf.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txtCpf.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txtCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCpfActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -87,14 +104,13 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
                 .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(93, 93, 93))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(lblUsuario))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(btConsultaSaldo)))
+                .addGap(79, 79, 79)
+                .addComponent(lblUsuario)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btConsultaSaldo)
+                .addGap(129, 129, 129))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,6 +127,7 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
         );
 
         btConsultaSaldo.getAccessibleContext().setAccessibleName("Consultar Saldo");
+        txtCpf.getAccessibleContext().setAccessibleDescription("");
 
         jMenu1.setText("Menu");
 
@@ -268,6 +285,10 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
     private void btConsultaSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultaSaldoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btConsultaSaldoActionPerformed
+
+    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCpfActionPerformed
 
    
     private ControllerADM controlADM;
