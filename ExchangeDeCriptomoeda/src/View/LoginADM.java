@@ -56,7 +56,8 @@ public class LoginADM extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
-        loginCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        loginCPF.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        loginCPF.setBorder(null);
         loginCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginCPFActionPerformed(evt);
@@ -75,6 +76,8 @@ public class LoginADM extends javax.swing.JFrame {
             }
         });
 
+        loginSenha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        loginSenha.setBorder(null);
         loginSenha.setVerifyInputWhenFocusTarget(false);
         loginSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,13 +191,14 @@ public class LoginADM extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setBounds(0, 0, 490, 431);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuLoginUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLoginUsActionPerformed
         Login login = new Login();
         
         login.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuLoginUsActionPerformed
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed

@@ -37,6 +37,11 @@ public class PaginaADM extends javax.swing.JFrame {
 
         btExcluirInvest.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btExcluirInvest.setText("Excluir Investidor");
+        btExcluirInvest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirInvestActionPerformed(evt);
+            }
+        });
 
         btCadsCripto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btCadsCripto.setText("Cadastrar Criptomoeda");
@@ -79,6 +84,11 @@ public class PaginaADM extends javax.swing.JFrame {
 
         btConsulExtra.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btConsulExtra.setText("Consultar Extrato");
+        btConsulExtra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConsulExtraActionPerformed(evt);
+            }
+        });
 
         btAtualizarCota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btAtualizarCota.setText("Atualizar Cotação");
@@ -109,11 +119,11 @@ public class PaginaADM extends javax.swing.JFrame {
             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btCadsInvest, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btExcluirInvest, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btCadsCripto)
-                    .addComponent(btExcluirCripto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btCadsInvest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btExcluirInvest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btExcluirCripto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btCadsCripto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btConsulExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,6 +165,8 @@ public class PaginaADM extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
         jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
 
+        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("Login ");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -199,28 +211,24 @@ public class PaginaADM extends javax.swing.JFrame {
         ConsultaSaldoADM CSA = new ConsultaSaldoADM();
         
         CSA.setVisible(true);
-        dispose();
     }//GEN-LAST:event_btConsulInvestActionPerformed
 
     private void btCadsInvestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadsInvestActionPerformed
         CadastroInvest CI = new CadastroInvest();
 
         CI.setVisible(true);
-        dispose();
     }//GEN-LAST:event_btCadsInvestActionPerformed
 
     private void btExcluirCriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirCriptoActionPerformed
         DeletarCripto DP = new DeletarCripto();
 
         DP.setVisible(true);
-        dispose();
     }//GEN-LAST:event_btExcluirCriptoActionPerformed
 
     private void btCadsCriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadsCriptoActionPerformed
         CadastroCripto CC = new CadastroCripto();
 
         CC.setVisible(true);
-        dispose();
     }//GEN-LAST:event_btCadsCriptoActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
@@ -232,8 +240,21 @@ public class PaginaADM extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btAtualizarCotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarCotaActionPerformed
-        // TODO add your handling code here:
+        AtualizarCotCripto atcc = new AtualizarCotCripto();
+        atcc.setVisible(true);
+        
     }//GEN-LAST:event_btAtualizarCotaActionPerformed
+
+    private void btExcluirInvestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirInvestActionPerformed
+        DeletaInvest delInvest = new DeletaInvest();
+        delInvest.setVisible(true);
+        
+    }//GEN-LAST:event_btExcluirInvestActionPerformed
+
+    private void btConsulExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsulExtraActionPerformed
+        Extrato extrato = new Extrato();
+        extrato.setVisible(true);
+    }//GEN-LAST:event_btConsulExtraActionPerformed
 
 
 
