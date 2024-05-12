@@ -12,6 +12,7 @@ import DAO.Conexao;
 import Model.Usuario;
 import View.CadastroCripto;
 import View.CadastroInvest;
+import View.ConsultaSaldoADM;
 import View.DeletaInvest;
 import View.DeletarCripto;
 import java.sql.Connection;
@@ -32,6 +33,11 @@ public class ControllerADM {
     public DeletaInvest DelInvest;
     public CadastroCripto CadCripto;
     public DeletarCripto DelCripto;
+    public ConsultaSaldoADM ConsultSaldo;
+
+    public ControllerADM(ConsultaSaldoADM ConsultSaldo) {
+        this.ConsultSaldo = ConsultSaldo;
+    }
     
     public ControllerADM(LoginADM loginADM){
         this.loginADM = loginADM;     
@@ -181,6 +187,8 @@ public class ControllerADM {
             
             System.out.println(e);
         }
+        
+        
         
     }
 }
