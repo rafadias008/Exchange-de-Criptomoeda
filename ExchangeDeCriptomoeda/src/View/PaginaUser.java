@@ -72,9 +72,19 @@ public class PaginaUser extends javax.swing.JFrame {
 
         btDepositar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btDepositar.setText("Depositar");
+        btDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDepositarActionPerformed(evt);
+            }
+        });
 
         btSacar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btSacar.setText("Sacar");
+        btSacar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSacarActionPerformed(evt);
+            }
+        });
 
         btConsulSaldo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btConsulSaldo.setText("Consultar Saldo");
@@ -166,6 +176,18 @@ public class PaginaUser extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositarActionPerformed
+        DepositoUsuario deposito = new DepositoUsuario();
+        
+        deposito.setVisible(true);
+    }//GEN-LAST:event_btDepositarActionPerformed
+
+    private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
+        SaqueUsuario saque = new SaqueUsuario();
+        
+        saque.setVisible(true);
+    }//GEN-LAST:event_btSacarActionPerformed
 
     
 

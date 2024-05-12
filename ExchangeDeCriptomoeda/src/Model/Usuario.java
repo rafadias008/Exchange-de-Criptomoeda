@@ -11,16 +11,18 @@ package Model;
 public class Usuario {
     
     private String nome, cpf,senha,cripto;
+    private double real;
 
     public Usuario() {
     }
     
     
 
-    public Usuario(String nome, String cpf, String senha) {
+    public Usuario(String nome, String cpf, String senha,double real) {
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
+        this.real = real;
     }
 
     public Usuario(String cripto) {
@@ -61,6 +63,13 @@ public class Usuario {
         this.cripto = cripto;
     }
 
+    public double getReal() {
+        return real;
+    }
+
+    public void setReal(double real) {
+        this.real = real;
+    }
     
     
     

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controller;
 
 
@@ -21,10 +18,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import View.PaginaADM;
 
-/**
- *
- * @author rafae
- */
+
 public class ControllerADM {
     
     public LoginADM loginADM;
@@ -99,7 +93,7 @@ public class ControllerADM {
     public void btCreatedInvest(){
         
         Usuario user = new Usuario(CadInvest.getTxtNome().getText(),CadInvest.getTxtCpf().getText(),
-                              CadInvest.getTxtSenha().getText());
+                              CadInvest.getTxtSenha().getText(),0);
         
         Conexao conexao = new Conexao();
         
@@ -123,7 +117,7 @@ public class ControllerADM {
     public void btDeletarInvest(){
         
         Usuario user = new Usuario(null,DelInvest.getTxtCpf().getText(),
-                              null);
+                              null,0);
         
         Conexao conexao = new Conexao();
         
