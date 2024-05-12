@@ -104,13 +104,14 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
                 .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(93, 93, 93))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(lblUsuario)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(lblUsuario))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(btConsultaSaldo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btConsultaSaldo)
-                .addGap(129, 129, 129))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,8 +127,10 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        btConsultaSaldo.getAccessibleContext().setAccessibleName("Consultar Saldo");
         txtCpf.getAccessibleContext().setAccessibleDescription("");
+
+        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
 
         jMenu1.setText("Menu");
 
@@ -295,7 +298,6 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Menu;
-    private javax.swing.JButton btConsSaldoADM;
     private javax.swing.JButton btConsultaSaldo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

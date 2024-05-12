@@ -136,6 +136,9 @@ public class CadastroInvest extends javax.swing.JFrame {
                 .addGap(38, 38, 38))
         );
 
+        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
+
         jMenu1.setText("Menu");
 
         Menu.setText("Menu");

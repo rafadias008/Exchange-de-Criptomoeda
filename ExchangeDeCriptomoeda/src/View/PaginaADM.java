@@ -82,9 +82,19 @@ public class PaginaADM extends javax.swing.JFrame {
 
         btAtualizarCota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btAtualizarCota.setText("Atualizar Cotação");
+        btAtualizarCota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAtualizarCotaActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 38)); // NOI18N
@@ -141,6 +151,9 @@ public class PaginaADM extends javax.swing.JFrame {
                     .addComponent(btExcluirCripto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60))
         );
+
+        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
 
         jMenu1.setText("Login ");
 
@@ -209,6 +222,18 @@ public class PaginaADM extends javax.swing.JFrame {
         CC.setVisible(true);
         dispose();
     }//GEN-LAST:event_btCadsCriptoActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        Login lu = new Login();
+        
+        lu.setVisible(true);
+        lu.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_btSairActionPerformed
+
+    private void btAtualizarCotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarCotaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAtualizarCotaActionPerformed
 
 
 
