@@ -83,7 +83,9 @@ public class ControllerADM {
                 String senha = res.getString("senha");
                 
                 
+                
                 PA.setVisible(true);
+                PA.setLocationRelativeTo(null);
                 
                 
             } else {
