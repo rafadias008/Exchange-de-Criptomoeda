@@ -108,6 +108,11 @@ public class Login extends javax.swing.JFrame {
                 loginSenhaActionPerformed(evt);
             }
         });
+        loginSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginSenhaKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,7 +132,6 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(loginSenha, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(loginCPF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -210,6 +214,7 @@ public class Login extends javax.swing.JFrame {
         LoginADM loginAdm = new LoginADM();
         
         loginAdm.setVisible(true);
+        dispose();
     }//GEN-LAST:event_loginAdminActionPerformed
 
     private void menuLoginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLoginUserActionPerformed
@@ -227,6 +232,13 @@ public class Login extends javax.swing.JFrame {
     private void loginSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginSenhaActionPerformed
+
+    private void loginSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginSenhaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            control.btLogin();
+            dispose();
+        }
+    }//GEN-LAST:event_loginSenhaKeyPressed
 
 //    /**
 //     * @param args the command line arguments

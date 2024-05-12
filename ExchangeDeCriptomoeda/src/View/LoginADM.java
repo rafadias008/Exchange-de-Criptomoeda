@@ -81,6 +81,11 @@ public class LoginADM extends javax.swing.JFrame {
                 loginSenhaActionPerformed(evt);
             }
         });
+        loginSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginSenhaKeyPressed(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 38)); // NOI18N
@@ -199,6 +204,13 @@ public class LoginADM extends javax.swing.JFrame {
     private void loginSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginSenhaActionPerformed
+
+    private void loginSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginSenhaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            controlADM.btLoginADM();
+            dispose();
+        }
+    }//GEN-LAST:event_loginSenhaKeyPressed
 
     public ControllerADM getControlADM() {
         return controlADM;
