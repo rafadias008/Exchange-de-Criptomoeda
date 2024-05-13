@@ -90,6 +90,7 @@ public class Controller {
             UsuarioDAO dao = new UsuarioDAO(conn);
             System.out.println("criou dao");
             dao.Deposito(user);
+            System.out.println("Funcionou");
             
                 
             NumberFormat formatter = NumberFormat.getIntegerInstance(new Locale("pt", "BR"));
@@ -98,6 +99,7 @@ public class Controller {
             JOptionPane.showMessageDialog(deposito, "Saldo atual: R$ "+
                         saldoFormatado,"Aviso",JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException e){
+            e.printStackTrace();
             JOptionPane.showMessageDialog(deposito, "Erro de conexão!"
                                ,"Erro",JOptionPane.ERROR_MESSAGE);
         }

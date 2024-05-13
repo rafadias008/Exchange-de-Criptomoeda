@@ -69,6 +69,11 @@ public class DeletaInvest extends javax.swing.JFrame {
 
         btDeletarInv.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btDeletarInv.setText("Deletar");
+        btDeletarInv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeletarInvActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -259,6 +264,10 @@ public class DeletaInvest extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
+    private void btDeletarInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletarInvActionPerformed
+        controlADM.btDeletarInvest();
+    }//GEN-LAST:event_btDeletarInvActionPerformed
+
     public ControllerADM getControlADM() {
         return controlADM;
     }
@@ -334,26 +343,8 @@ public class DeletaInvest extends javax.swing.JFrame {
     private ControllerADM controlADM;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Menu;
-    private javax.swing.JButton btCriarCripto;
-    private javax.swing.JButton btCriarCripto1;
-    private javax.swing.JButton btCriarCripto2;
-    private javax.swing.JButton btCriarCripto3;
-    private javax.swing.JButton btCriarCripto4;
-    private javax.swing.JButton btCriarCripto5;
     private javax.swing.JButton btDeletarInv;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -366,20 +357,8 @@ public class DeletaInvest extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JTextField txtCpf;
-    private javax.swing.JTextField txtNomeCripto;
-    private javax.swing.JTextField txtNomeCripto1;
-    private javax.swing.JTextField txtNomeCripto2;
-    private javax.swing.JTextField txtNomeCripto3;
-    private javax.swing.JTextField txtNomeCripto4;
-    private javax.swing.JTextField txtNomeCripto5;
     // End of variables declaration//GEN-END:variables
 }

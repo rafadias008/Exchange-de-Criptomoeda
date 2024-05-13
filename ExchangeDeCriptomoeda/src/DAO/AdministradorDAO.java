@@ -41,7 +41,14 @@ public class AdministradorDAO {
     //funcionando
     public void createdInvest(Usuario usuario)throws SQLException{
         
-        String sql = "insert into usuarios(nome,cpf,senha) values (?,?,?)";
+        String sql = """
+                     INSERT INTO public.usuarios(
+                     \tnome, cpf, senha)
+                     \tVALUES (?, ?, ?) ;
+                     \t
+                     insert into carteira (real,bitcoin,ethereum,ripple) 
+                     \tvalues (0,0,0,0);""";
+        
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1,usuario.getNome());
@@ -54,13 +61,20 @@ public class AdministradorDAO {
     
     public void deletarInvest(Usuario usuario) throws SQLException{
         
-        String sql = "delete from usuarios where cpf = ?";
+        String sql ="DELETE FROM carteira\n" +
+                    "WHERE id IN (\n" +
+                    "   SELECT usuarios.id\n" +
+                    "   FROM carteira \n" +
+                    "   INNER JOIN usuarios ON usuarios.id = carteira.id\n" +
+                    "   WHERE usuarios.cpf = ?);\n" +
+                    "   \n" +
+                    "delete from usuarios where cpf = ?;";
         
         System.out.println(sql);
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, usuario.getCpf());
-        
+        statement.setString(2, usuario.getCpf());
         statement.execute();
         conn.close();
     }

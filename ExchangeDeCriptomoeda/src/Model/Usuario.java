@@ -17,7 +17,6 @@ public class Usuario {
     }
     
     
-
     public Usuario(String nome, String cpf, String senha,double real) {
         this.nome = nome;
         this.cpf = cpf;

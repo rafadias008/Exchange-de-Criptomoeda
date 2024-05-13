@@ -58,7 +58,7 @@ public class UsuarioDAO {
         double valorAtual = saldoAtual(user);
         double valorFuturo = valorAtual + user.getReal();
         
-        String sql = "update usuarios set real = ? where cpf = ?";
+        String sql = "update carteira set real = ? from usuarios where usuarios.cpf = ? and carteira.id = usuarios.id";
         
         System.out.println(sql);
         
