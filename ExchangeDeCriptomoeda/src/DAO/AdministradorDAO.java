@@ -43,17 +43,19 @@ public class AdministradorDAO {
         
         String sql = """
                      INSERT INTO public.usuarios(
-                     \tnome, cpf, senha)
+                     \tnome,senha,cpf)
                      \tVALUES (?, ?, ?) ;
                      \t
-                     insert into carteira (real,bitcoin,ethereum,ripple) 
-                     \tvalues (0,0,0,0);""";
+                     insert into carteira (cpf) 
+                     \tvalues (?);""";
         
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1,usuario.getNome());
-        statement.setString(2, usuario.getCpf());
-        statement.setString(3,usuario.getSenha());
+        statement.setString(2,usuario.getSenha());
+        statement.setString(3, usuario.getCpf());
+        statement.setString(4,usuario.getCpf());
+        
         statement.execute();
         conn.close();
          
@@ -62,10 +64,10 @@ public class AdministradorDAO {
     public void deletarInvest(Usuario usuario) throws SQLException{
         
         String sql ="DELETE FROM carteira\n" +
-                    "WHERE id IN (\n" +
-                    "   SELECT usuarios.id\n" +
+                    "WHERE cpf IN (\n" +
+                    "   SELECT usuarios.cpf\n" +
                     "   FROM carteira \n" +
-                    "   INNER JOIN usuarios ON usuarios.id = carteira.id\n" +
+                    "   INNER JOIN usuarios ON usuarios.cpf = carteira.cpf\n" +
                     "   WHERE usuarios.cpf = ?);\n" +
                     "   \n" +
                     "delete from usuarios where cpf = ?;";
@@ -81,7 +83,7 @@ public class AdministradorDAO {
     
     public void criarCripto(Usuario usuario) throws SQLException{
         
-        String sql = "alter table usuarios add "+usuario.getCripto() +" double precision not null default 0";
+        String sql = "alter table carteira add "+usuario.getCripto() +" double precision not null default 0";
         
         System.out.println(sql);
         
@@ -92,7 +94,7 @@ public class AdministradorDAO {
     
     public void DeletarCripto(Usuario usuario) throws SQLException{
         
-        String sql = "alter table usuarios drop column "+usuario.getCripto();
+        String sql = "alter table carteira drop column "+usuario.getCripto();
         
         System.out.println(sql);
         
