@@ -84,6 +84,8 @@ public class ControllerADM {
                 
             } else {
                 JOptionPane.showMessageDialog(loginADM, "Login não efetuado!");
+
+                
             }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(loginADM, "Erro de conexão!");

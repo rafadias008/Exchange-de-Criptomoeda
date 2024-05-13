@@ -212,14 +212,7 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                <BevelBorder>
-                  <Color PropertyName="highlightOuter" blue="ff" green="ff" red="ff" type="rgb"/>
-                  <Color PropertyName="highlightInner" blue="ff" green="ff" red="ff" type="rgb"/>
-                  <Color PropertyName="shadowOuter" blue="ff" green="ff" red="ff" type="rgb"/>
-                  <Color PropertyName="shadowInner" blue="ff" green="ff" red="ff" type="rgb"/>
-                </BevelBorder>
-              </Border>
+              <Border info="null"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="14" style="1"/>

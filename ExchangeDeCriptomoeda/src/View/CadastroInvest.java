@@ -139,6 +139,8 @@ public class CadastroInvest extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
         jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
 
+        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("Menu");
 
         Menu.setText("Menu");
@@ -233,11 +235,15 @@ public class CadastroInvest extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setBounds(0, 0, 368, 383);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarInActionPerformed
-        // TODO add your handling code here:
+        controlADM. btCreatedInvest();
+        PaginaADM ladm = new PaginaADM();
+        
+        ladm.setVisible(true);
+        
     }//GEN-LAST:event_btCadastrarInActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

@@ -103,7 +103,7 @@ public class PaginaUser extends javax.swing.JFrame {
         btComprarCripto.setText("Comprar Criptomoeda");
 
         inforUser.setEditable(false);
-        inforUser.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
+        inforUser.setBorder(null);
         inforUser.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jScrollPane1.setViewportView(inforUser);
 
