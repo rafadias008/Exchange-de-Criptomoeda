@@ -24,7 +24,7 @@ public class UsuarioDAO {
     
     public double saldoAtual(Usuario user)throws SQLException{
         
-        String sql = "select real from usuarios where cpf = ?";
+        String sql = "select reais from carteira where cpf = ?";
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1,user.getCpf());
@@ -32,7 +32,7 @@ public class UsuarioDAO {
         
         double valorAtual = 0;
         if (res.next()){
-            valorAtual = res.getDouble("real");
+            valorAtual = res.getDouble("reais");
         } 
         
         return valorAtual;
@@ -58,7 +58,7 @@ public class UsuarioDAO {
         double valorAtual = saldoAtual(user);
         double valorFuturo = valorAtual + user.getReal();
         
-        String sql = "update carteira set real = ? from usuarios where usuarios.cpf = ? and carteira.id = usuarios.id";
+        String sql = "update carteira set reais = ? where cpf = ?";
         
         System.out.println(sql);
         
@@ -75,7 +75,7 @@ public class UsuarioDAO {
         double valorAtual = saldoAtual(user);
         double valorFuturo = valorAtual - user.getReal();
         
-        String sql = "update usuarios set real = ? where cpf = ?";
+        String sql = "update carteira set reais = ? where cpf = ?";
         
         System.out.println(sql);
         
