@@ -24,6 +24,14 @@ public class Usuario {
         this.real = real;
     }
 
+    public Usuario(String nome, String cpf, String senha) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.senha = senha;
+    }
+    
+    
+
     public Usuario(String cripto) {
         this.cripto = cripto;
     }

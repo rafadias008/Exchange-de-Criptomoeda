@@ -24,19 +24,64 @@ public class UsuarioDAO {
     
     public double saldoAtual(Usuario user)throws SQLException{
         
-        String sql = "select reais from carteira where cpf = ?";
+        String sql = "select * from carteira where cpf = ?";
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1,user.getCpf());
         ResultSet res = statement.executeQuery();
         
-        double valorAtual = 0;
+        double valorAtualReal = 0;
         if (res.next()){
-            valorAtual = res.getDouble("reais");
+            valorAtualReal = res.getDouble("reais");  
         } 
-        
-        return valorAtual;
+        return valorAtualReal;
     }
+    
+    public double saldoAtualBitcoin(Usuario user)throws SQLException{
+        
+        String sql = "select * from carteira where cpf = ?";
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,user.getCpf());
+        ResultSet res = statement.executeQuery();
+        
+        double valorAtualBitcoin = 0;
+        if (res.next()){
+            valorAtualBitcoin = res.getDouble("bitcoin");  
+        } 
+        return valorAtualBitcoin;
+    }
+    
+    public double saldoAtualRipple(Usuario user)throws SQLException{
+        
+        String sql = "select * from carteira where cpf = ?";
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,user.getCpf());
+        ResultSet res = statement.executeQuery();
+        
+        double valorAtualRipple = 0;
+        if (res.next()){
+            valorAtualRipple = res.getDouble("ripple");  
+        } 
+        return valorAtualRipple;   
+    }
+    
+    public double saldoAtualEthereum(Usuario user)throws SQLException{
+        
+        String sql = "select * from carteira where cpf = ?";
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,user.getCpf());
+        ResultSet res = statement.executeQuery();
+        
+        double valorAtualEthereum = 0;
+        if (res.next()){
+            valorAtualEthereum = res.getDouble("ethereum");  
+        } 
+        return valorAtualEthereum;
+    }
+    
     
     public ResultSet consultarLogin(Usuario user) throws SQLException{
 

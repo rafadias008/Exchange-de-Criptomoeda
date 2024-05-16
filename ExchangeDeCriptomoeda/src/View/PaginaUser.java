@@ -170,7 +170,9 @@ public class PaginaUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btConsulSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsulSaldoActionPerformed
-        // TODO add your handling code here:
+        ConsultaSaldo consulta = new ConsultaSaldo();
+        
+        consulta.setVisible(true);
     }//GEN-LAST:event_btConsulSaldoActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed

@@ -1,24 +1,28 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package View;
 
 import Controller.Controller;
-import Model.Usuario;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+/**
+ *
+ * @author rafae
+ */
+public class ConsultaSaldo extends javax.swing.JFrame {
 
-public class DepositoUsuario extends javax.swing.JFrame {
-
-    
-    public DepositoUsuario() {
+    /**
+     * Creates new form ConsultaSaldo
+     */
+    public ConsultaSaldo() {
         initComponents();
         
         control = new Controller(this);
-    }
-    
-    public DepositoUsuario (Usuario user){
-        this.user = user;
     }
 
     /**
@@ -30,26 +34,25 @@ public class DepositoUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtValorDeposito = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        btDeposito = new javax.swing.JButton();
         txtCPF = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        txtSenha = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("DEPOSITO");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel3.setText("CPF:");
+        jLabel1.setText("Consulta Saldo");
 
-        jLabel1.setText("Depositar");
+        jLabel2.setText("CPF:");
 
-        jLabel2.setText("Valor:");
+        jLabel3.setText("Senha:");
 
-        btDeposito.setText("Confirmar");
-        btDeposito.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Consultar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDepositoActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -60,45 +63,44 @@ public class DepositoUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
+                        .addGap(154, 154, 154)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(btDeposito))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(92, 92, 92)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(txtCPF)
                             .addComponent(jLabel3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2)
-                                .addComponent(txtValorDeposito)
-                                .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))))
-                .addContainerGap(139, Short.MAX_VALUE))
+                            .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jButton1)))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtValorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btDeposito)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jButton1)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositoActionPerformed
-        control.btDeposito();
-    }//GEN-LAST:event_btDepositoActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        control.btConsultarSaldo();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public Controller getControl() {
         return control;
@@ -108,12 +110,12 @@ public class DepositoUsuario extends javax.swing.JFrame {
         this.control = control;
     }
 
-    public JButton getBtDeposito() {
-        return btDeposito;
+    public JButton getjButton1() {
+        return jButton1;
     }
 
-    public void setBtDeposito(JButton btDeposito) {
-        this.btDeposito = btDeposito;
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
     }
 
     public JLabel getjLabel1() {
@@ -148,25 +150,25 @@ public class DepositoUsuario extends javax.swing.JFrame {
         this.txtCPF = txtCPF;
     }
 
-    public JTextField getTxtValorDeposito() {
-        return txtValorDeposito;
+    public JPasswordField getTxtSenha() {
+        return txtSenha;
     }
 
-    public void setTxtValorDeposito(JTextField txtValorDeposito) {
-        this.txtValorDeposito = txtValorDeposito;
+    public void setTxtSenha(JPasswordField txtSenha) {
+        this.txtSenha = txtSenha;
     }
+
     
+
     
     
     private Controller control;
-    private Usuario user;
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btDeposito;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtCPF;
-    private javax.swing.JTextField txtValorDeposito;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

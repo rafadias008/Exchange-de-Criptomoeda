@@ -4,6 +4,7 @@ package Controller;
 import DAO.Conexao;
 import DAO.UsuarioDAO;
 import Model.Usuario;
+import View.ConsultaSaldo;
 import View.DepositoUsuario;
 import View.Login;
 import View.PaginaUser;
@@ -25,6 +26,7 @@ public class Controller {
     private Login login;
     private DepositoUsuario deposito;
     private SaqueUsuario saque;
+    private ConsultaSaldo consulta;
     
     public Controller(Login login){
         this.login = login;
@@ -34,6 +36,9 @@ public class Controller {
     }
     public Controller(SaqueUsuario saque){
         this.saque = saque;   
+    }
+    public Controller(ConsultaSaldo consulta){
+        this.consulta = consulta;
     }
     
     public void btLogin(){
@@ -52,7 +57,7 @@ public class Controller {
             System.out.println("resultado");
             
             if(res.next()){
-                 PaginaUser PU = new PaginaUser();
+                PaginaUser PU = new PaginaUser();
                 
                 String nome = res.getString("nome");
                 String cpf = res.getString("cpf");
@@ -64,8 +69,7 @@ public class Controller {
                 PU.getInforUser().setText("Nome: " +nome +
                                               "\n\nCPF: " + cpf);
                 
-                
-                
+                    
             } else {
                 JOptionPane.showMessageDialog(login, "Login não efetuado!");
             }
@@ -133,5 +137,45 @@ public class Controller {
                                ,"Erro",JOptionPane.ERROR_MESSAGE);
         }
  
+    }
+    
+    public void btConsultarSaldo(){
+        
+        Usuario user = new Usuario(null,consulta.getTxtCPF().getText(),
+                              consulta.getTxtSenha().getText());
+        
+        Conexao conexao = new Conexao();
+        
+        try{
+            Connection conn  = conexao.getConnection();
+            System.out.println("conectou");
+            UsuarioDAO dao = new UsuarioDAO(conn);
+            System.out.println("criou dao");
+            ResultSet res = dao.consultarLogin(user);
+            System.out.println("resultado");
+            
+            
+            if(res.next()){
+                
+                String nome = res.getString("nome");
+                String cpf = res.getString("cpf");
+                String senha = res.getString("senha");
+                
+                double saldoReal = dao.saldoAtual(user);
+                double saldoBit = dao.saldoAtualBitcoin(user);
+                double saldoEthe = dao.saldoAtualEthereum(user);
+                double saldoRipple = dao.saldoAtualRipple(user);
+                
+                
+                JOptionPane.showMessageDialog(consulta, "NOME: "+nome+
+                    "\nCPF: " + cpf + "\n\nReal: " + saldoReal+ "\nBitcoin: "+ saldoBit +
+                    "\nEthereum: "+saldoEthe+"\nRipple: " + saldoRipple);
+                    
+            } else {
+                JOptionPane.showMessageDialog(login, "Usuário não encontrado");
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(login, "Erro de conexão!");
+        }
     }
 }
