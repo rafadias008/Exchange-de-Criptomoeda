@@ -38,7 +38,6 @@ public class AdministradorDAO {
         
     }
     
-    //funcionando
     public void createdInvest(Usuario usuario)throws SQLException{
         
         String sql = """

@@ -4,6 +4,7 @@ package Controller;
 import DAO.Conexao;
 import DAO.UsuarioDAO;
 import Model.Usuario;
+import View.ConsultaExtrato;
 import View.ConsultaSaldo;
 import View.DepositoUsuario;
 import View.Login;
@@ -27,6 +28,7 @@ public class Controller {
     private DepositoUsuario deposito;
     private SaqueUsuario saque;
     private ConsultaSaldo consulta;
+    private ConsultaExtrato consultaExtrato;
     
     public Controller(Login login){
         this.login = login;
@@ -39,6 +41,9 @@ public class Controller {
     }
     public Controller(ConsultaSaldo consulta){
         this.consulta = consulta;
+    }
+    public Controller(ConsultaExtrato consultaExtrato){
+        this.consultaExtrato = consultaExtrato;
     }
     
     public void btLogin(){
@@ -177,5 +182,41 @@ public class Controller {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(login, "Erro de conexão!");
         }
+    }
+    
+    public void btConsultaExtrato(){
+        
+        Usuario user = new Usuario(null,consultaExtrato.getTxtCPF().getText(),
+                              consultaExtrato.getTxtSenha().getText());
+        
+        Conexao conexao = new Conexao();
+        
+        try{
+            Connection conn  = conexao.getConnection();
+            System.out.println("conectou");
+            UsuarioDAO dao = new UsuarioDAO(conn);
+            System.out.println("criou dao");
+            ResultSet res = dao.consultarLogin(user);
+            System.out.println("resultado");
+            
+            
+            if(res.next()){
+                
+                String nome = res.getString("nome");
+                String cpf = res.getString("cpf");
+                String senha = res.getString("senha");
+                
+                String extrato = dao.Extrato(user);
+                consultaExtrato.getExibeExtrato().setText(extrato);
+                
+                
+            } else {
+                JOptionPane.showMessageDialog(login, "Usuário não encontrado");
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(login, "Erro de conexão!");
+        }
+
     }
 }

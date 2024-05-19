@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -132,6 +134,29 @@ public class UsuarioDAO {
         
     }
     
-    
+    public String Extrato(Usuario user) throws SQLException{
+        
+        String sql = "SELECT * FROM public.extrato where cpf = ?";
+        
+        System.out.println(sql);
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,user.getCpf());
+        ResultSet res = statement.executeQuery();
+        
+        StringBuilder extrato = new StringBuilder();
+        
+        while (res.next()) {
+            String linha = res.getString("data") + "  " + res.getString("tipodeoperacao")+
+                    "  " + res.getString("valor") + "  " + res.getString("moeda")+
+                    "  " + "CT: " + res.getString("ct") + "  " + "TX: " +  res.getString("taxa") + 
+                    "  " + "R$: " +res.getString("real") + "  " +" BTC: "+ res.getString("bitcoin")+
+                    "  " +"ETH: "+ res.getString("ethereum") + "  " +"XRP: "+ res.getString("ripple");
+            extrato.append(linha).append("\n\n");
+        }
+
+        return extrato.toString();
+         
+    }
     
 }
