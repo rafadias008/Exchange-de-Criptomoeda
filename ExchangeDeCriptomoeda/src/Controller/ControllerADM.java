@@ -6,6 +6,7 @@ import DAO.AdministradorDAO;
 import Model.Administrador;
 import View.LoginADM;
 import DAO.Conexao;
+import DAO.UsuarioDAO;
 import Model.Usuario;
 import View.CadastroCripto;
 import View.CadastroInvest;
@@ -21,13 +22,14 @@ import View.PaginaADM;
 
 public class ControllerADM {
     
-    public LoginADM loginADM;
+    private LoginADM loginADM;
     
-    public CadastroInvest CadInvest;
-    public DeletaInvest DelInvest;
-    public CadastroCripto CadCripto;
-    public DeletarCripto DelCripto;
-    public ConsultaSaldoADM ConsultSaldo;
+    private CadastroInvest CadInvest;
+    private DeletaInvest DelInvest;
+    private CadastroCripto CadCripto;
+    private DeletarCripto DelCripto;
+    private ConsultaSaldoADM ConsultSaldo;
+    
 
     public ControllerADM(ConsultaSaldoADM ConsultSaldo) {
         this.ConsultSaldo = ConsultSaldo;
@@ -52,6 +54,8 @@ public class ControllerADM {
     public ControllerADM(DeletarCripto DelCripto){
         this.DelCripto = DelCripto;
     }
+    
+    
     
     public void btLoginADM(){
         
@@ -186,7 +190,46 @@ public class ControllerADM {
             System.out.println(e);
         }
         
+    }
+    
+    public void btConsultarSaldo(){
         
+        Usuario user = new Usuario(null,ConsultSaldo.getTxtCpf().getText(),
+                              null);
         
+        Conexao conexao = new Conexao();
+        
+        try{
+            Connection conn  = conexao.getConnection();
+            System.out.println("conectou");
+            UsuarioDAO dao = new UsuarioDAO(conn);
+            System.out.println("criou dao");
+            AdministradorDAO dao2 = new AdministradorDAO(conn);
+            ResultSet res = dao2.consultarUsuario(user);
+            System.out.println("resultado");
+            
+            
+            if(res.next()){
+                
+                String nome = res.getString("nome");
+                String cpf = res.getString("cpf");
+                String senha = res.getString("senha");
+                
+                double saldoReal = dao.saldoAtual(user);
+                double saldoBit = dao.saldoAtualBitcoin(user);
+                double saldoEthe = dao.saldoAtualEthereum(user);
+                double saldoRipple = dao.saldoAtualRipple(user);
+                
+                
+                JOptionPane.showMessageDialog(ConsultSaldo, "NOME: "+nome+
+                    "\nCPF: " + cpf + "\n\nReal: " + saldoReal+ "\nBitcoin: "+ saldoBit +
+                    "\nEthereum: "+saldoEthe+"\nRipple: " + saldoRipple);
+                    
+            } else {
+                JOptionPane.showMessageDialog(ConsultSaldo, "Usuário não encontrado");
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(ConsultSaldo, "Erro de conexão!");
+        }
     }
 }

@@ -5,6 +5,8 @@
 package View;
 
 import Controller.ControllerADM;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -288,13 +290,30 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void btConsultaSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultaSaldoActionPerformed
-        // TODO add your handling code here:
+        controlADM.btConsultarSaldo();
     }//GEN-LAST:event_btConsultaSaldoActionPerformed
 
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
 
+    public JButton getBtConsultaSaldo() {
+        return btConsultaSaldo;
+    }
+
+    public void setBtConsultaSaldo(JButton btConsultaSaldo) {
+        this.btConsultaSaldo = btConsultaSaldo;
+    }
+
+    public JTextField getTxtCpf() {
+        return txtCpf;
+    }
+
+    public void setTxtCpf(JTextField txtCpf) {
+        this.txtCpf = txtCpf;
+    }
+    
+    
    
     private ControllerADM controlADM;
 
