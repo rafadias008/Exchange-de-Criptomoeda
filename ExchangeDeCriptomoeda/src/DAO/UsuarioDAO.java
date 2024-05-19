@@ -9,13 +9,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- *
- * @author rafae
- */
+
+
 public class UsuarioDAO {
     
     private Connection conn;

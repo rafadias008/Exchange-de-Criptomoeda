@@ -13,6 +13,7 @@ import View.CadastroInvest;
 import View.ConsultaSaldoADM;
 import View.DeletaInvest;
 import View.DeletarCripto;
+import View.Extrato;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,6 +30,7 @@ public class ControllerADM {
     private CadastroCripto CadCripto;
     private DeletarCripto DelCripto;
     private ConsultaSaldoADM ConsultSaldo;
+    private Extrato consultExtrato;
     
 
     public ControllerADM(ConsultaSaldoADM ConsultSaldo) {
@@ -53,6 +55,10 @@ public class ControllerADM {
     
     public ControllerADM(DeletarCripto DelCripto){
         this.DelCripto = DelCripto;
+    }
+    
+    public ControllerADM(Extrato consultExtrato){
+        this.consultExtrato = consultExtrato;
     }
     
     
@@ -232,4 +238,45 @@ public class ControllerADM {
             JOptionPane.showMessageDialog(ConsultSaldo, "Erro de conexão!");
         }
     }
+    
+    public void btConsultExtrato(){
+        Usuario user = new Usuario(null,consultExtrato.getTxtCpf().getText(),
+                              null);
+        
+        Conexao conexao = new Conexao();
+        
+        try{
+            Connection conn  = conexao.getConnection();
+            System.out.println("conectou");
+            UsuarioDAO dao = new UsuarioDAO(conn);
+            System.out.println("criou dao");
+            AdministradorDAO dao2 = new AdministradorDAO(conn);
+            ResultSet res = dao2.consultarUsuario(user);
+            System.out.println("resultado");
+            
+            
+            
+            if(res.next()){
+                
+                String nome = res.getString("nome");
+                String cpf = res.getString("cpf");
+                String senha = res.getString("senha");
+                
+                consultExtrato.getExibeInformacoes().setText("Nome: "+ nome +"\n"
+                                + "CPF: " + cpf);
+                
+                String extrato = dao.Extrato(user);
+                consultExtrato.getExibeExtrato().setText(extrato);
+                
+                
+            } else {
+                JOptionPane.showMessageDialog(consultExtrato, "Usuário não encontrado");
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(consultExtrato, "Erro de conexão!");
+        }
+
+    }
+    
 }

@@ -206,6 +206,9 @@ public class Controller {
                 String cpf = res.getString("cpf");
                 String senha = res.getString("senha");
                 
+                consultaExtrato.getExibeInformacoes().setText("Nome: " + nome + "\n"
+                                + "CPF: " + cpf);
+                
                 String extrato = dao.Extrato(user);
                 consultaExtrato.getExibeExtrato().setText(extrato);
                 
