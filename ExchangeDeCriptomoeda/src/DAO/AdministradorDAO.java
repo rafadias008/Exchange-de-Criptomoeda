@@ -5,6 +5,7 @@
 package DAO;
 
 import Model.Administrador;
+import Model.Moedas;
 import Model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -80,24 +81,32 @@ public class AdministradorDAO {
         conn.close();
     }
     
-    public void criarCripto(Usuario usuario) throws SQLException{
+    public void criarCripto(Moedas moeda) throws SQLException{
         
-        String sql = "alter table carteira add "+usuario.getCripto() +" double precision not null default 0";
+        String sql = "alter table carteira add "+moeda.getCripto() +" double precision not null default 0;\n" +
+                        "\n" +
+                        "INSERT INTO public.moedas(\n" +
+                        "	nome, valor)\n" +
+                        "	VALUES (?, ?);";
         
         System.out.println(sql);
         
         PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, moeda.getCripto());
+        statement.setDouble(2, moeda.getValor());
         statement.execute();
         conn.close();
     }
     
-    public void DeletarCripto(Usuario usuario) throws SQLException{
+    public void DeletarCripto(Moedas moeda) throws SQLException{
         
-        String sql = "alter table carteira drop column "+usuario.getCripto();
+        String sql = "alter table carteira drop column "+moeda.getCripto()+";"+
+                "\ndelete from moedas where nome = ?;";
         
         System.out.println(sql);
         
         PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, moeda.getCripto());
         statement.execute();
         conn.close();
     }

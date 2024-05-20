@@ -7,6 +7,7 @@ import Model.Administrador;
 import View.LoginADM;
 import DAO.Conexao;
 import DAO.UsuarioDAO;
+import Model.Moedas;
 import Model.Usuario;
 import View.CadastroCripto;
 import View.CadastroInvest;
@@ -151,7 +152,9 @@ public class ControllerADM {
     
     public void btCadastrarCripto(){
         
-        Usuario user = new Usuario(CadCripto.getTxtNomeCripto().getText());
+        double valor = Double.parseDouble(CadCripto.getTxtValorMoeda().getText());
+        
+        Moedas moeda = new Moedas(CadCripto.getTxtNomeCripto().getText(),valor);
         
         Conexao conexao = new Conexao();
         
@@ -160,7 +163,7 @@ public class ControllerADM {
             System.out.println("conectou");
             AdministradorDAO dao = new AdministradorDAO(conn);
             System.out.println("criou dao");
-            dao.criarCripto(user);
+            dao.criarCripto(moeda);
             
             
             JOptionPane.showMessageDialog(CadCripto, "Criptomoeda criada!");
@@ -175,7 +178,7 @@ public class ControllerADM {
     
     public void btDeletarCripto(){
         
-        Usuario user = new Usuario(DelCripto.getTxtNomeCripto().getText());
+        Moedas moeda = new Moedas(DelCripto.getTxtNomeCripto().getText(),0);
         
         Conexao conexao = new Conexao();
         
@@ -184,7 +187,7 @@ public class ControllerADM {
             System.out.println("conectou");
             AdministradorDAO dao = new AdministradorDAO(conn);
             System.out.println("criou dao");
-            dao.DeletarCripto(user);
+            dao.DeletarCripto(moeda);
             
             
             JOptionPane.showMessageDialog(DelCripto, "Criptomoeda deletada!");
