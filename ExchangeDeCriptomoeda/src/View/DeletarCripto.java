@@ -58,6 +58,12 @@ public class DeletarCripto extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Deletar Criptomoeda");
 
+        txtNomeCripto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeCriptoKeyPressed(evt);
+            }
+        });
+
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -268,6 +274,13 @@ public class DeletarCripto extends javax.swing.JFrame {
         cotacaoCripto.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void txtNomeCriptoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeCriptoKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            controlADM.btDeletarCripto();
+            dispose();
+        }
+    }//GEN-LAST:event_txtNomeCriptoKeyPressed
 
     public ControllerADM getControlADM() {
         return controlADM;

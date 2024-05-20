@@ -57,7 +57,7 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
 
         jButton2.setText("jButton2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -85,14 +85,19 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
         jLabel2.setText("Consultar Saldo");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        txtCpf.setBackground(new java.awt.Color(51, 51, 51));
+        txtCpf.setBackground(new java.awt.Color(255, 255, 255));
         txtCpf.setForeground(new java.awt.Color(255, 255, 255));
-        txtCpf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(157, 157, 157)));
+        txtCpf.setBorder(null);
         txtCpf.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txtCpf.setSelectionColor(new java.awt.Color(255, 0, 0));
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfActionPerformed(evt);
+            }
+        });
+        txtCpf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCpfKeyPressed(evt);
             }
         });
 
@@ -296,6 +301,13 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
+
+    private void txtCpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCpfKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            controlADM.btConsultarSaldo();
+            dispose();
+        }
+    }//GEN-LAST:event_txtCpfKeyPressed
 
     public JButton getBtConsultaSaldo() {
         return btConsultaSaldo;
