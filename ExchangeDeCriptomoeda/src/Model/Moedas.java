@@ -10,13 +10,39 @@ package Model;
  */
 public class Moedas {
    private String cripto;
-   private double valor;
+   private double valor,txVenda,txCompra;
 
     public Moedas(String cripto, double valor) {
         this.cripto = cripto;
         this.valor = valor;
     }
-   
+
+    public Moedas(String cripto, double valor, double txCompra, double txVenda) {
+        this.cripto = cripto;
+        this.valor = valor;
+        this.txVenda = txVenda;
+        this.txCompra = txCompra;
+    }
+    
+    
+    
+    public double getTxVenda() {
+        return txVenda;
+    }
+
+    public void setTxVenda(double txVenda) {
+        this.txVenda = txVenda;
+    }
+
+    public double getTxCompra() {
+        return txCompra;
+    }
+
+    public void setTxCompra(double txCompra) {
+        this.txCompra = txCompra;
+    }
+    
+    
    
 
     public String getCripto() {

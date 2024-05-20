@@ -83,17 +83,23 @@ public class AdministradorDAO {
     
     public void criarCripto(Moedas moeda) throws SQLException{
         
+        
+        
         String sql = "alter table carteira add "+moeda.getCripto() +" double precision not null default 0;\n" +
                         "\n" +
                         "INSERT INTO public.moedas(\n" +
-                        "	nome, valor)\n" +
-                        "	VALUES (?, ?);";
+                        "	nome, valor,txcompra,txvenda)\n" +
+                        "	VALUES (?,?,?,?);";
         
         System.out.println(sql);
+        double txCompra = moeda.getTxCompra() / 100;
+        double txVenda = moeda.getTxVenda() / 100;
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, moeda.getCripto());
         statement.setDouble(2, moeda.getValor());
+        statement.setDouble(3, txCompra);
+        statement.setDouble(4, txVenda);
         statement.execute();
         conn.close();
     }

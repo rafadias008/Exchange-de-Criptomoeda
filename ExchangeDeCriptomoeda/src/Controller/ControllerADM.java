@@ -153,8 +153,10 @@ public class ControllerADM {
     public void btCadastrarCripto(){
         
         double valor = Double.parseDouble(CadCripto.getTxtValorMoeda().getText());
+        double txCompra = Double.parseDouble(CadCripto.getTxtTaxaCompra().getText());
+        double txVenda =  Double.parseDouble(CadCripto.getTxtTaxaVenda().getText());
         
-        Moedas moeda = new Moedas(CadCripto.getTxtNomeCripto().getText(),valor);
+        Moedas moeda = new Moedas(CadCripto.getTxtNomeCripto().getText(),valor,txCompra,txVenda);
         
         Conexao conexao = new Conexao();
         
