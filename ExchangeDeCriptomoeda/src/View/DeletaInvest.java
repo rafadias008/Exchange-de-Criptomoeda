@@ -63,7 +63,7 @@ public class DeletaInvest extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Deletar Investidor");
 
-        lblUsuario.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setText("CPF:");
 
@@ -88,7 +88,7 @@ public class DeletaInvest extends javax.swing.JFrame {
                             .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
+                        .addGap(117, 117, 117)
                         .addComponent(btDeletarInv)))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
@@ -101,9 +101,9 @@ public class DeletaInvest extends javax.swing.JFrame {
                 .addComponent(lblUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addComponent(btDeletarInv)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));

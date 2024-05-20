@@ -58,6 +58,9 @@ public class SaqueUsuario extends javax.swing.JFrame {
         lblUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario1.setText("CPF:");
 
+        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
+
         jMenu1.setText("Menu");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -118,7 +121,9 @@ public class SaqueUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btDepositoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        PaginaUser PU = new PaginaUser();
+        PU.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public Controller getControl() {
