@@ -74,17 +74,17 @@ public class CadastroInvest extends javax.swing.JFrame {
         });
 
         lblNome.setBackground(new java.awt.Color(255, 255, 255));
-        lblNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblNome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNome.setForeground(new java.awt.Color(255, 255, 255));
         lblNome.setText("Nome:");
 
         lblUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setText("CPF:");
 
         lblSenha.setBackground(new java.awt.Color(255, 255, 255));
-        lblSenha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblSenha.setForeground(new java.awt.Color(255, 255, 255));
         lblSenha.setText("Senha:");
 
@@ -117,7 +117,7 @@ public class CadastroInvest extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(lblNome)
@@ -235,7 +235,7 @@ public class CadastroInvest extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setBounds(0, 0, 368, 383);
+        setBounds(0, 0, 368, 389);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarInActionPerformed
