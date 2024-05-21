@@ -149,6 +149,8 @@ public class ConsultaSaldo extends javax.swing.JFrame {
         jMenuBar2.setBackground(new java.awt.Color(51, 51, 51));
         jMenuBar2.setForeground(new java.awt.Color(0, 0, 0));
 
+        jMenu2.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
         jMenu2.setText("Menu");
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
