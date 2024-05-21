@@ -23,6 +23,9 @@ public class Moedas {
         this.txVenda = txVenda;
         this.txCompra = txCompra;
     }
+
+    public Moedas() {
+    }
     
     
     

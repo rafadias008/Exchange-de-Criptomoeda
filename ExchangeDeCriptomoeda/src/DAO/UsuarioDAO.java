@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import Model.Moedas;
 import Model.Usuario;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -155,4 +156,6 @@ public class UsuarioDAO {
          
     }
     
+    
+
 }

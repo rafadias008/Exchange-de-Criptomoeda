@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.Controller;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,6 +21,8 @@ public class PaginaUser extends javax.swing.JFrame {
      */
     public PaginaUser() {
         initComponents();
+        
+        control = new Controller(this);
     }
 
     /**
@@ -66,6 +69,11 @@ public class PaginaUser extends javax.swing.JFrame {
 
         btComprarCripto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btComprarCripto.setText("Comprar Criptomoeda");
+        btComprarCripto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btComprarCriptoActionPerformed(evt);
+            }
+        });
 
         inforUser.setEditable(false);
         inforUser.setBorder(null);
@@ -218,6 +226,13 @@ public class PaginaUser extends javax.swing.JFrame {
         consulta.setVisible(true);
     }//GEN-LAST:event_btConsulSaldoActionPerformed
 
+    private void btComprarCriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btComprarCriptoActionPerformed
+       CompraCripto comprar =  new CompraCripto();
+       
+       comprar.setVisible(true);
+        
+    }//GEN-LAST:event_btComprarCriptoActionPerformed
+
     
 
     public JButton getBtAtualizarCota() {
@@ -310,7 +325,7 @@ public class PaginaUser extends javax.swing.JFrame {
         this.inforUser = inforUser;
     }
     
-    
+    private Controller control;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAtualizarCota;

@@ -4,6 +4,7 @@ package Controller;
 import DAO.Conexao;
 import DAO.UsuarioDAO;
 import Model.Usuario;
+import View.CompraCripto;
 import View.ConsultaExtrato;
 import View.ConsultaSaldo;
 import View.DepositoUsuario;
@@ -18,17 +19,24 @@ import java.util.Locale;
 
 import javax.swing.JOptionPane;
 
+import java.sql.*;
+
 /**
  *
  * @author rafae
  */
 public class Controller {
     
+    private Connection conn;
+    
     private Login login;
+    private PaginaUser paUser;
     private DepositoUsuario deposito;
     private SaqueUsuario saque;
     private ConsultaSaldo consulta;
     private ConsultaExtrato consultaExtrato;
+    private CompraCripto comprarCripto;
+    
     
     public Controller(Login login){
         this.login = login;
@@ -45,6 +53,16 @@ public class Controller {
     public Controller(ConsultaExtrato consultaExtrato){
         this.consultaExtrato = consultaExtrato;
     }
+    
+
+    public Controller(PaginaUser paUser) {
+        this.paUser = paUser;
+    }
+
+    public Controller(CompraCripto comprarCripto) {
+        this.comprarCripto = comprarCripto;
+    }
+    
     
     public void btLogin(){
        
@@ -222,4 +240,33 @@ public class Controller {
         }
 
     }
+    
+    public void consultarMoedas() {
+        try {
+            Conexao conexao = new Conexao();
+            Connection conn = conexao.getConnection();
+
+            String sql = "select * from moedas;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet resultado = statement.executeQuery();
+
+            StringBuilder string = new StringBuilder();
+
+            while (resultado.next()) {
+                string.append("").append(resultado.getString("nome").toUpperCase())
+                      .append("     Valor: R$ ").append(resultado.getDouble("valor"))
+                      .append("   Taxa de Compra: ").append(resultado.getDouble("txcompra"))
+                      .append("%\n");
+            }
+
+            comprarCripto.getTxtMoedas().setText(string.toString());
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
 }
+
