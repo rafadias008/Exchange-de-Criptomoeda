@@ -198,6 +198,7 @@ public class LoginADM extends javax.swing.JFrame {
         Login login = new Login();
         
         login.setVisible(true);
+        login.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_menuLoginUsActionPerformed
 

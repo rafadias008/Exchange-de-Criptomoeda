@@ -84,8 +84,17 @@ public class ConsultaExtrato extends javax.swing.JFrame {
         });
 
         exibeExtrato.setEditable(false);
+        exibeExtrato.setForeground(new java.awt.Color(51, 51, 51));
+        exibeExtrato.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        exibeExtrato.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(exibeExtrato);
 
+        ExibeInformacoes.setBackground(new java.awt.Color(51, 51, 51));
+        ExibeInformacoes.setForeground(new java.awt.Color(51, 51, 51));
+        ExibeInformacoes.setCaretColor(new java.awt.Color(255, 255, 255));
+        ExibeInformacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        ExibeInformacoes.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        ExibeInformacoes.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(ExibeInformacoes);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -141,8 +150,8 @@ public class ConsultaExtrato extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUsuario1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
