@@ -1,6 +1,7 @@
 
 package Controller;
 
+import DAO.AdministradorDAO;
 import DAO.Conexao;
 import DAO.UsuarioDAO;
 import Model.Moedas;
@@ -339,5 +340,17 @@ public class Controller {
         }
         
     }
+    
+    public void atualizarCotacao() {
+        try {
+            Conexao conexao = new Conexao();
+            Connection conn = conexao.getConnection();
+            AdministradorDAO dao = new AdministradorDAO(conn);
+            dao.atualizarCotacao();
+            JOptionPane.showMessageDialog(null, "Cotação atualizada com sucesso!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a cotação: " + e.getMessage());
+        }
+}
 }
 

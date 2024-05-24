@@ -32,6 +32,11 @@ public class ControllerADM {
     private DeletarCripto DelCripto;
     private ConsultaSaldoADM ConsultSaldo;
     private Extrato consultExtrato;
+    private PaginaADM pgADM;
+
+    public ControllerADM(PaginaADM pgADM) {
+        this.pgADM = pgADM;
+    }
     
 
     public ControllerADM(ConsultaSaldoADM ConsultSaldo) {
@@ -100,6 +105,7 @@ public class ControllerADM {
                 
             }
         }catch(SQLException e){
+            
             JOptionPane.showMessageDialog(loginADM, "Erro de conexão!");
         }
     }
@@ -284,5 +290,18 @@ public class ControllerADM {
         }
 
     }
+    
+    public void atualizarCotacao() {
+        try {
+            Conexao conexao = new Conexao();
+            Connection conn = conexao.getConnection();
+            AdministradorDAO dao = new AdministradorDAO(conn);
+            dao.atualizarCotacao();
+            JOptionPane.showMessageDialog(null, "Cotação atualizada com sucesso!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a cotação: " + e.getMessage());
+        }
+}
+
     
 }

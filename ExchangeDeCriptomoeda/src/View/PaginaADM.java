@@ -1,12 +1,16 @@
 
 package View;
 
+import Controller.ControllerADM;
+
 
 public class PaginaADM extends javax.swing.JFrame {
-
+    private ControllerADM controlADM;
+    
     
     public PaginaADM() {
         initComponents();
+        controlADM = new ControllerADM(this);
     }
 
     
@@ -206,8 +210,7 @@ public class PaginaADM extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btAtualizarCotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarCotaActionPerformed
-        AtualizarCotCripto atcc = new AtualizarCotCripto();
-        atcc.setVisible(true);
+        controlADM.atualizarCotacao();
         
     }//GEN-LAST:event_btAtualizarCotaActionPerformed
 

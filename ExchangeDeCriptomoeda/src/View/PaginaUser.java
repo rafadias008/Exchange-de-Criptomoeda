@@ -85,6 +85,11 @@ public class PaginaUser extends javax.swing.JFrame {
 
         btAtualizarCota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btAtualizarCota.setText("Atualizar Cotação");
+        btAtualizarCota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAtualizarCotaActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btSair.setText("Sair");
@@ -234,6 +239,10 @@ public class PaginaUser extends javax.swing.JFrame {
        comprar.setVisible(true);
         
     }//GEN-LAST:event_btComprarCriptoActionPerformed
+
+    private void btAtualizarCotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarCotaActionPerformed
+        control.atualizarCotacao();
+    }//GEN-LAST:event_btAtualizarCotaActionPerformed
 
     
 

@@ -130,7 +130,33 @@ public class AdministradorDAO {
         return resultado;
         
     }
+    
+    public void atualizarCotacao() throws SQLException {
+    String sql = "SELECT * FROM moedas";
+    PreparedStatement statement = conn.prepareStatement(sql);
+    ResultSet resultado = statement.executeQuery();
+
+    while (resultado.next()) {
+        String nomeMoeda = resultado.getString("nome");
+        double valorMoeda = resultado.getDouble("valor");
+
+        double novoValorMoeda = valorMoeda * 0.95; // -5%
+
+        sql = "UPDATE moedas SET valor = ? WHERE nome = ?";
+        statement = conn.prepareStatement(sql);
+        statement.setDouble(1, novoValorMoeda);
+        statement.setString(2, nomeMoeda);
+        statement.executeUpdate();
+    }
+    
+}
+
+
 
 }
+
+
+
+
     
     
