@@ -156,6 +156,40 @@ public class UsuarioDAO {
          
     }
     
+    public Double valorMoeda(Moedas moeda) throws SQLException{
+        
+        String sql = "SELECT valor FROM public.moedas where nome=?";
+        
+        System.out.println(sql);
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,moeda.getCripto());
+        ResultSet res =  statement.executeQuery();
+        
+        double valorMoeda = 0;
+        if (res.next()){
+            valorMoeda = res.getDouble("valor");  
+        } 
+        return valorMoeda;
+    }
+    
+    public Double valorTxCompra(Moedas moeda) throws SQLException{
+        
+        String sql = "SELECT txcompra FROM public.moedas where nome=?";
+        
+        System.out.println(sql);
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,moeda.getCripto());
+        ResultSet res =  statement.executeQuery();
+        
+        double valorTxCompra = 0;
+        if (res.next()){
+            valorTxCompra = res.getDouble("txcompra");  
+        } 
+        return valorTxCompra;
+    }
+    
     
 
 }

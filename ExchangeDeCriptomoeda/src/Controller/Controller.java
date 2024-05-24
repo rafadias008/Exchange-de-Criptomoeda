@@ -3,6 +3,7 @@ package Controller;
 
 import DAO.Conexao;
 import DAO.UsuarioDAO;
+import Model.Moedas;
 import Model.Usuario;
 import View.CompraCripto;
 import View.ConsultaExtrato;
@@ -267,6 +268,60 @@ public class Controller {
         }
     }
 
-    
+    public void comprarMoeda(){
+        
+        String combo = (String) comprarCripto.getComboBox().getSelectedItem();
+        
+        double quantidadeReais = Double.parseDouble(comprarCripto.getTxtQuantidadeReais().getText());
+        
+        Usuario user = new Usuario(null,comprarCripto.getTxtCpf().getText(),
+                              comprarCripto.getTxtSenha().getText());
+        
+        Moedas moeda = new Moedas(combo,quantidadeReais);
+        
+        
+        
+        Conexao conexao = new Conexao();
+        
+        try{
+            Connection conn  = conexao.getConnection();
+            System.out.println("conectou");
+            UsuarioDAO dao = new UsuarioDAO(conn);
+            System.out.println("criou dao");
+            ResultSet res = dao.consultarLogin(user);
+            
+            if(res.next()){
+                
+                String nome = res.getString("nome");
+                String cpf = res.getString("cpf");
+                String senha = res.getString("senha");
+                
+                double valorMoeda = dao.valorMoeda(moeda);
+                double txCompra = dao.valorTxCompra(moeda);
+                
+                System.out.println(valorMoeda);
+                System.out.println(txCompra);
+                System.out.println(moeda.getValor());
+                
+                
+                double calculoTaxa = moeda.getValor() * txCompra;
+                double valorComprado = moeda.getValor() - calculoTaxa;
+                double calculoCriptos = valorComprado / valorMoeda;
+                
+                System.out.println("Reais: " + valorComprado);
+                System.out.println("Cripto: " + calculoCriptos);
+                System.out.println("Taxa: " + calculoTaxa);
+                
+                    
+            } else {
+                JOptionPane.showMessageDialog(login, "Usuário não encontrado");
+            }
+                        
+        }catch(SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(login, "Erro de conexão!");
+        }
+        
+    }
 }
 
