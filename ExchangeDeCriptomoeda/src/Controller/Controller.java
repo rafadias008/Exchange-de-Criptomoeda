@@ -296,30 +296,46 @@ public class Controller {
                 String cpf = res.getString("cpf");
                 String senha = res.getString("senha");
                 
+                
+                
+                if (dao.saldoAtual(user) - moeda.getValor() < 0){
+                   
+                    JOptionPane.showMessageDialog(comprarCripto,"Saldo insufiente");
+                    return;
+                }
+                
                 double valorMoeda = dao.valorMoeda(moeda);
                 double txCompra = dao.valorTxCompra(moeda);
                 
-                System.out.println(valorMoeda);
-                System.out.println(txCompra);
-                System.out.println(moeda.getValor());
+                
                 
                 
                 double calculoTaxa = moeda.getValor() * txCompra;
                 double valorComprado = moeda.getValor() - calculoTaxa;
                 double calculoCriptos = valorComprado / valorMoeda;
                 
+                
+                
                 System.out.println("Reais: " + valorComprado);
                 System.out.println("Cripto: " + calculoCriptos);
                 System.out.println("Taxa: " + calculoTaxa);
                 
+                String sql = "update carteira set "+combo+" = ? where cpf = ?";
+        
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setDouble(1, calculoCriptos);
+                statement.setString(2, comprarCripto.getTxtCpf().getText());
+                statement.execute();
+                conn.close();
+                
                     
             } else {
-                JOptionPane.showMessageDialog(login, "Usuário não encontrado");
+                JOptionPane.showMessageDialog(comprarCripto, "Usuário não encontrado");
             }
                         
         }catch(SQLException e){
             e.printStackTrace();
-            JOptionPane.showMessageDialog(login, "Erro de conexão!");
+            JOptionPane.showMessageDialog(comprarCripto, "Erro de conexão!");
         }
         
     }
