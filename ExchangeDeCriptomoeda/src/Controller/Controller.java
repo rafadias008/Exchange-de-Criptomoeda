@@ -101,7 +101,7 @@ public class Controller {
                 
                     
             } else {
-                JOptionPane.showMessageDialog(login, "Login não efetuado!");
+                JOptionPane.showMessageDialog(login, "Usuário ou senha incorreta!");
             }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(login, "Erro de conexão!");
@@ -134,7 +134,7 @@ public class Controller {
                         saldoFormatado,"Aviso",JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException e){
             e.printStackTrace();
-            JOptionPane.showMessageDialog(deposito, "Erro de conexão!"
+            JOptionPane.showMessageDialog(deposito, "Usuário ou senha incorreta!"
                                ,"Erro",JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -163,7 +163,7 @@ public class Controller {
             JOptionPane.showMessageDialog(deposito, "Saldo atual: R$ "+
                         saldoFormatado,"Aviso",JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(deposito, "Erro de conexão!"
+            JOptionPane.showMessageDialog(deposito, "Usuário ou senha incorreta!"
                                ,"Erro",JOptionPane.ERROR_MESSAGE);
         }
  

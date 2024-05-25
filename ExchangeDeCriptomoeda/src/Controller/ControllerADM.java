@@ -209,14 +209,19 @@ public class ControllerADM {
         try{
             Connection conn  = conexao.getConnection();
             System.out.println("conectou");
-            AdministradorDAO dao = new AdministradorDAO(conn);
-            System.out.println("criou dao");
-            dao.deletarInvest(user);
+            
+            try{
+                AdministradorDAO dao = new AdministradorDAO(conn);
+                System.out.println("criou dao");
+                dao.deletarInvest(user);
             
             
-            JOptionPane.showMessageDialog(CadInvest, "Investidor Deletado!");
+                JOptionPane.showMessageDialog(CadInvest, "Investidor Deletado!");
                 
-            
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(CadInvest, "CPF invalido");
+            }
+              
         }catch(SQLException e){
             JOptionPane.showMessageDialog(CadInvest, "Erro de conexão!");
         }
@@ -228,7 +233,7 @@ public class ControllerADM {
         double txCompra = Double.parseDouble(CadCripto.getTxtTaxaCompra().getText());
         double txVenda =  Double.parseDouble(CadCripto.getTxtTaxaVenda().getText());
         
-        Moedas moeda = new Moedas(CadCripto.getTxtNomeCripto().getText(),valor,txCompra,txVenda);
+        Moedas moeda = new Moedas(CadCripto.getTxtNomeCripto().getText().toLowerCase(),valor,txCompra,txVenda);
         
         Conexao conexao = new Conexao();
         
@@ -244,7 +249,7 @@ public class ControllerADM {
                 
             
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(CadCripto, "Erro de conexão!");
+            JOptionPane.showMessageDialog(CadCripto, "Criptomoeda já existente!");
             
             System.out.println(e);
         }
@@ -268,7 +273,7 @@ public class ControllerADM {
                 
             
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(DelCripto, "Erro de conexão!");
+            JOptionPane.showMessageDialog(DelCripto, "Criptomoeda não encontrada!");
             
             System.out.println(e);
         }
