@@ -203,8 +203,8 @@ public class UsuarioDAO {
         
         double saldoCripto = 0;
         if (res.next()){
-            System.out.println(res.getDouble(user.getCripto()));
-            //saldoCripto = res.getDouble(user.getCripto());  
+            
+            saldoCripto = res.getDouble(user.getCripto());  
         } 
         return saldoCripto;
     }

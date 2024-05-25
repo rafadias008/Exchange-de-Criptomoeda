@@ -271,14 +271,16 @@ public class Controller {
 
     public void comprarMoeda(){
         
-        String combo = (String) comprarCripto.getComboBox().getSelectedItem();
+        //String combo = (String) comprarCripto.getComboBox().getSelectedItem();
         
         double quantidadeReais = Double.parseDouble(comprarCripto.getTxtQuantidadeReais().getText());
         
         Usuario user = new Usuario(null,comprarCripto.getTxtCpf().getText(),
-                              comprarCripto.getTxtSenha().getText(),combo);
+                              comprarCripto.getTxtSenha().getText(),
+                              comprarCripto.getTxtNomeCripto().getText().toLowerCase());
         
-        Moedas moeda = new Moedas(combo,quantidadeReais);
+        Moedas moeda = new Moedas(comprarCripto.getTxtNomeCripto().getText().toLowerCase(),
+                                  quantidadeReais);
         
         Conexao conexao = new Conexao();
               
@@ -325,10 +327,16 @@ public class Controller {
                 statement1.setString(2, comprarCripto.getTxtCpf().getText());
                 statement1.execute();
                 
+                System.out.println("\n\nSaldo anterior: " + dao.saldoCripto(user));
+                
+                //variavel para somar o saldo da criptomoeda
                 double saldo = dao.saldoCripto(user) + calculoCriptos;
                 
+                System.out.println("\n\nNovo saldo: " + saldo );
+                
                 //atualiza o saldo da cripto
-                String sql = "update carteira set "+combo+" = ? where cpf = ?";
+                String sql = "update carteira set "+comprarCripto.getTxtNomeCripto().getText()+
+                             " = ? where cpf = ?";
         
                 PreparedStatement statement = conn.prepareStatement(sql);
                 statement.setDouble(1, saldo);
@@ -337,7 +345,7 @@ public class Controller {
                 conn.close();
                 
                 JOptionPane.showMessageDialog(comprarCripto,"Compra Realizada com Sucesso\n\n"
-                        + "Criptomoeda: " + combo+"\n"
+                        + "Criptomoeda: " + comprarCripto.getTxtNomeCripto().getText()+"\n"
                         + "\nValor em Reais: R$ " + moeda.getValor() + "\nTaxa: " + calculoTaxa
                         + "\nQuantidade comprada: " + calculoCriptos);
                 
