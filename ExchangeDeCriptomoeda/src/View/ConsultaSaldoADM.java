@@ -86,7 +86,7 @@ public class ConsultaSaldoADM extends javax.swing.JFrame {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtCpf.setBackground(new java.awt.Color(255, 255, 255));
-        txtCpf.setForeground(new java.awt.Color(255, 255, 255));
+        txtCpf.setForeground(new java.awt.Color(0, 0, 0));
         txtCpf.setBorder(null);
         txtCpf.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txtCpf.setSelectionColor(new java.awt.Color(255, 0, 0));

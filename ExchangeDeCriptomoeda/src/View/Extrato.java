@@ -94,6 +94,8 @@ public class Extrato extends javax.swing.JFrame {
 
         ExibeExtrato.setBackground(new java.awt.Color(51, 51, 51));
         ExibeExtrato.setBorder(null);
+        ExibeExtrato.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ExibeExtrato.setForeground(new java.awt.Color(255, 255, 255));
         ExibeExtrato.setCaretColor(new java.awt.Color(51, 51, 51));
         ExibeExtrato.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ExibeExtrato.setSelectedTextColor(new java.awt.Color(255, 255, 255));
@@ -101,6 +103,8 @@ public class Extrato extends javax.swing.JFrame {
 
         ExibeInformacoes.setBackground(new java.awt.Color(51, 51, 51));
         ExibeInformacoes.setBorder(null);
+        ExibeInformacoes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ExibeInformacoes.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(ExibeInformacoes);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -149,8 +153,8 @@ public class Extrato extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btConsulta)
-                .addContainerGap(398, Short.MAX_VALUE))
+                .addComponent(btConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(390, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(164, 164, 164)
