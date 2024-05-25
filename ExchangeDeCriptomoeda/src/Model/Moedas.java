@@ -8,7 +8,7 @@ package Model;
  *
  * @author rafae
  */
-public class Moedas {
+public class Moedas implements TaxaMoedas{
    private String cripto;
    private double valor,txVenda,txCompra;
 
@@ -27,18 +27,22 @@ public class Moedas {
     
     
     
+    @Override
     public double getTxVenda() {
         return txVenda;
     }
 
+    @Override
     public void setTxVenda(double txVenda) {
         this.txVenda = txVenda;
     }
 
+    @Override
     public double getTxCompra() {
         return txCompra;
     }
 
+    @Override
     public void setTxCompra(double txCompra) {
         this.txCompra = txCompra;
     }

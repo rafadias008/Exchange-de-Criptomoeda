@@ -20,6 +20,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import View.PaginaADM;
+import java.text.DecimalFormat;
+import java.util.Map;
 
 
 public class ControllerADM {
@@ -301,17 +303,22 @@ public class ControllerADM {
                 
                 String nome = res.getString("nome");
                 String cpf = res.getString("cpf");
-                String senha = res.getString("senha");
-                
-                double saldoReal = dao.saldoAtual(user);
-                double saldoBit = dao.saldoAtualBitcoin(user);
-                double saldoEthe = dao.saldoAtualEthereum(user);
-                double saldoRipple = dao.saldoAtualRipple(user);
-                
-                
-                JOptionPane.showMessageDialog(ConsultSaldo, "NOME: "+nome+
-                    "\nCPF: " + cpf + "\n\nReal: " + saldoReal+ "\nBitcoin: "+ saldoBit +
-                    "\nEthereum: "+saldoEthe+"\nRipple: " + saldoRipple);
+
+                Map<String, Double> saldos = dao.saldoAtualMoedas(user);
+
+                StringBuilder saldoStr = new StringBuilder();
+                saldoStr.append("NOME: ").append(nome)
+                        .append("\nCPF: ").append(cpf)
+                        .append("\n");
+
+                // Criar o formatador para 3 casas decimais
+                DecimalFormat df = new DecimalFormat("#.###");
+
+                for (Map.Entry<String, Double> entry : saldos.entrySet()) {
+                    saldoStr.append("\n").append(entry.getKey()).append(": ").append(df.format(entry.getValue()));
+                }
+
+                JOptionPane.showMessageDialog(ConsultSaldo, saldoStr.toString());
                     
             } else {
                 JOptionPane.showMessageDialog(ConsultSaldo, "Usuário não encontrado");

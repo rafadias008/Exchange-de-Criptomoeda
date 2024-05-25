@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+import java.sql.ResultSetMetaData;
 
 
 
@@ -45,49 +48,25 @@ public class UsuarioDAO {
         return valorAtualReal;
     }
     
-    public double saldoAtualBitcoin(Usuario user)throws SQLException{
-        
-        String sql = "select * from carteira where cpf = ?";
-        
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1,user.getCpf());
-        ResultSet res = statement.executeQuery();
-        
-        double valorAtualBitcoin = 0;
-        if (res.next()){
-            valorAtualBitcoin = res.getDouble("bitcoin");  
-        } 
-        return valorAtualBitcoin;
-    }
+    public Map<String, Double> saldoAtualMoedas(Usuario user) throws SQLException {
+    String sql = "select * from carteira where cpf = ?";
     
-    public double saldoAtualRipple(Usuario user)throws SQLException{
-        
-        String sql = "select * from carteira where cpf = ?";
-        
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1,user.getCpf());
-        ResultSet res = statement.executeQuery();
-        
-        double valorAtualRipple = 0;
-        if (res.next()){
-            valorAtualRipple = res.getDouble("ripple");  
-        } 
-        return valorAtualRipple;   
-    }
+    PreparedStatement statement = conn.prepareStatement(sql);
+    statement.setString(1, user.getCpf());
+    ResultSet res = statement.executeQuery();
     
-    public double saldoAtualEthereum(Usuario user)throws SQLException{
-        
-        String sql = "select * from carteira where cpf = ?";
-        
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1,user.getCpf());
-        ResultSet res = statement.executeQuery();
-        
-        double valorAtualEthereum = 0;
-        if (res.next()){
-            valorAtualEthereum = res.getDouble("ethereum");  
+    Map<String, Double> saldoMap = new HashMap<>();
+    if (res.next()) {
+        ResultSetMetaData metaData = res.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        for (int i = 1; i <= columnCount; i++) {
+            String columnName = metaData.getColumnName(i);
+            if (!columnName.equalsIgnoreCase("cpf")) { // Ignora a coluna CPF
+                saldoMap.put(columnName, res.getDouble(columnName));
+                }
+            }
         } 
-        return valorAtualEthereum;
+        return saldoMap;
     }
     
     
@@ -300,6 +279,51 @@ public class UsuarioDAO {
             statement.executeUpdate();
         }
 
+    }
+    
+    public double saldoAtualBitcoin(Usuario user)throws SQLException{
+        
+        String sql = "select * from carteira where cpf = ?";
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,user.getCpf());
+        ResultSet res = statement.executeQuery();
+        
+        double valorAtualBitcoin = 0;
+        if (res.next()){
+            valorAtualBitcoin = res.getDouble("bitcoin");  
+        } 
+        return valorAtualBitcoin;
+    }
+    
+    public double saldoAtualRipple(Usuario user)throws SQLException{
+        
+        String sql = "select * from carteira where cpf = ?";
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,user.getCpf());
+        ResultSet res = statement.executeQuery();
+        
+        double valorAtualRipple = 0;
+        if (res.next()){
+            valorAtualRipple = res.getDouble("ripple");  
+        } 
+        return valorAtualRipple;   
+    }
+    
+    public double saldoAtualEthereum(Usuario user)throws SQLException{
+        
+        String sql = "select * from carteira where cpf = ?";
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,user.getCpf());
+        ResultSet res = statement.executeQuery();
+        
+        double valorAtualEthereum = 0;
+        if (res.next()){
+            valorAtualEthereum = res.getDouble("ethereum");  
+        } 
+        return valorAtualEthereum;
     }
     
     

@@ -25,6 +25,8 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -203,12 +205,12 @@ public class Controller {
     }
     
     public void btConsultarSaldo(){
-        
+
         Usuario user = new Usuario(null,consulta.getTxtCPF().getText(),
                               consulta.getTxtSenha().getText());
-        
+
         Conexao conexao = new Conexao();
-        
+
         try{
             Connection conn  = conexao.getConnection();
             System.out.println("conectou");
@@ -216,39 +218,44 @@ public class Controller {
             System.out.println("criou dao");
             ResultSet res = dao.consultarLogin(user);
             System.out.println("resultado");
-            
-            
+
+
             if(res.next()){
-                
+
                 String nome = res.getString("nome");
                 String cpf = res.getString("cpf");
-                String senha = res.getString("senha");
-                
-                double saldoReal = dao.saldoAtual(user);
-                double saldoBit = dao.saldoAtualBitcoin(user);
-                double saldoEthe = dao.saldoAtualEthereum(user);
-                double saldoRipple = dao.saldoAtualRipple(user);
-                
-                
-                JOptionPane.showMessageDialog(consulta, "NOME: "+nome+
-                    "\nCPF: " + cpf + "\n\nReal: " + saldoReal+ "\nBitcoin: "+ saldoBit +
-                    "\nEthereum: "+saldoEthe+"\nRipple: " + saldoRipple);
-                    
+
+                Map<String, Double> saldos = dao.saldoAtualMoedas(user);
+
+                StringBuilder saldoStr = new StringBuilder();
+                saldoStr.append("NOME: ").append(nome)
+                        .append("\nCPF: ").append(cpf)
+                        .append("\n");
+
+                // Criar o formatador para 3 casas decimais
+                DecimalFormat df = new DecimalFormat("#.###");
+
+                for (Map.Entry<String, Double> entry : saldos.entrySet()) {
+                    saldoStr.append("\n").append(entry.getKey()).append(": ").append(df.format(entry.getValue()));
+                }
+
+                JOptionPane.showMessageDialog(consulta, saldoStr.toString());
+
             } else {
-                JOptionPane.showMessageDialog(login, "Usuário não encontrado");
+                JOptionPane.showMessageDialog(consulta, "Usuário não encontrado");
             }
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(login, "Erro de conexão!");
+            JOptionPane.showMessageDialog(consulta, "Erro de conexão!");
         }
     }
-    
+
     public void btConsultaExtrato(){
-        
+
         Usuario user = new Usuario(null,consultaExtrato.getTxtCPF().getText(),
                               consultaExtrato.getTxtSenha().getText());
-        
+
         Conexao conexao = new Conexao();
-        
+
         try{
             Connection conn  = conexao.getConnection();
             System.out.println("conectou");
@@ -256,28 +263,28 @@ public class Controller {
             System.out.println("criou dao");
             ResultSet res = dao.consultarLogin(user);
             System.out.println("resultado");
-            
-            
+
+
             if(res.next()){
-                
-                String nome = res.getString("nome");
-                String cpf = res.getString("cpf");
-                String senha = res.getString("senha");
-                
-                consultaExtrato.getExibeInformacoes().setText("Nome: " + nome + "\n"
-                                + "CPF: " + cpf);
-                
-                String extrato = dao.Extrato(user);
-                consultaExtrato.getExibeExtrato().setText(extrato);
-                
-                
-            } else {
-                JOptionPane.showMessageDialog(login, "Usuário não encontrado");
+
+                    String nome = res.getString("nome");
+                    String cpf = res.getString("cpf");
+                    String senha = res.getString("senha");
+
+                    consultaExtrato.getExibeInformacoes().setText("Nome: " + nome + "\n"
+                                    + "CPF: " + cpf);
+
+                    String extrato = dao.Extrato(user);
+                    consultaExtrato.getExibeExtrato().setText(extrato);
+
+
+                } else {
+                    JOptionPane.showMessageDialog(login, "Usuário não encontrado");
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(login, "Erro de conexão!");
             }
-        }catch(SQLException e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(login, "Erro de conexão!");
-        }
 
     }
     
