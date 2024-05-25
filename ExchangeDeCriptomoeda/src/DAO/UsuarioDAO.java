@@ -287,29 +287,6 @@ public class UsuarioDAO {
 
     }
     
-    public void gerarExtratoDeposito(Usuario user)throws SQLException{
-        
-        double valorAtual = saldoAtual(user);
-        double valorFuturo = valorAtual + user.getReal();
-        
-        String sql = "INSERT INTO public.extrato(\n" +
-"	data, tipodeoperacao, valor, moeda, real , bitcoin, ethereum, ripple, cpf)\n" +
-"	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?); ";
-        
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1,dataHoraFormatada);
-        statement.setString(2, "+");
-        statement.setDouble(3,valorFuturo);
-        statement.setString(4,"REAIS");
-        statement.setDouble(5,saldoAtual(user));
-        statement.setDouble(6,saldoAtualBitcoin(user));
-        statement.setDouble(7,saldoAtualEthereum(user));
-        statement.setDouble(8,saldoAtualRipple(user));
-        statement.setString(9,user.getCpf());
-        statement.execute();
-        conn.close();
-        
-        
-    }
+    
 
 }

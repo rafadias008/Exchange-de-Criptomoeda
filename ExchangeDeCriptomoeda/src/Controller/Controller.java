@@ -357,7 +357,25 @@ public class Controller {
                 statement.setDouble(1, saldo);
                 statement.setString(2, comprarCripto.getTxtCpf().getText());
                 statement.execute();
+                
+                String sql2 = "INSERT INTO public.extrato(\n" +
+        "	data, tipodeoperacao, valor, moeda,taxa, real , bitcoin, ethereum, ripple, cpf)\n" +
+        "	VALUES (?, ?, ?, ?, ?,? ,?, ?, ?, ?); ";
+
+                PreparedStatement statement2 = conn.prepareStatement(sql2);
+                statement2.setString(1,dataHoraFormatada);
+                statement2.setString(2, "+");
+                statement2.setDouble(3,calculoCriptos);
+                statement2.setString(4,moeda.getCripto().toUpperCase());
+                statement2.setDouble(5,calculoTaxa);
+                statement2.setDouble(6,saldoRestante);
+                statement2.setDouble(7,dao.saldoAtualBitcoin(user));
+                statement2.setDouble(8,dao.saldoAtualEthereum(user));
+                statement2.setDouble(9,dao.saldoAtualRipple(user));
+                statement2.setString(10,user.getCpf());
+                statement2.execute();
                 conn.close();
+                
                 
                 JOptionPane.showMessageDialog(comprarCripto,"Compra Realizada com Sucesso\n\n"
                         + "Criptomoeda: " + comprarCripto.getTxtNomeCripto().getText()+"\n"
@@ -471,6 +489,23 @@ public class Controller {
                 statement.setDouble(1, saldo);
                 statement.setString(2, venderCripto.getTxtCpf().getText());
                 statement.execute();
+                
+                String sql2 = "INSERT INTO public.extrato(\n" +
+        "	data, tipodeoperacao, valor, moeda,taxa, real , bitcoin, ethereum, ripple, cpf)\n" +
+        "	VALUES (?, ?, ?, ?, ?,? ,?, ?, ?, ?); ";
+
+                PreparedStatement statement2 = conn.prepareStatement(sql2);
+                statement2.setString(1,dataHoraFormatada);
+                statement2.setString(2, "+");
+                statement2.setDouble(3,valorAReceber);
+                statement2.setString(4,"REAIS");
+                statement2.setDouble(5,calculoTxVenda);
+                statement2.setDouble(6,saldoRestante);
+                statement2.setDouble(7,dao.saldoAtualBitcoin(user));
+                statement2.setDouble(8,dao.saldoAtualEthereum(user));
+                statement2.setDouble(9,dao.saldoAtualRipple(user));
+                statement2.setString(10,user.getCpf());
+                statement2.execute();
                 conn.close();
                 
                 JOptionPane.showMessageDialog(venderCripto,"Compra Realizada com Sucesso\n\n"
