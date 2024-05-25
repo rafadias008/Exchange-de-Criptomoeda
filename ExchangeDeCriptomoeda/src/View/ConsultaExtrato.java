@@ -84,14 +84,14 @@ public class ConsultaExtrato extends javax.swing.JFrame {
         });
 
         exibeExtrato.setEditable(false);
-        exibeExtrato.setForeground(new java.awt.Color(51, 51, 51));
+        exibeExtrato.setBackground(new java.awt.Color(51, 51, 51));
+        exibeExtrato.setForeground(new java.awt.Color(255, 255, 255));
         exibeExtrato.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         exibeExtrato.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(exibeExtrato);
 
-        ExibeInformacoes.setBackground(new java.awt.Color(51, 51, 51));
-        ExibeInformacoes.setForeground(new java.awt.Color(51, 51, 51));
-        ExibeInformacoes.setCaretColor(new java.awt.Color(255, 255, 255));
+        ExibeInformacoes.setBackground(new java.awt.Color(60, 63, 65));
+        ExibeInformacoes.setForeground(new java.awt.Color(255, 255, 255));
         ExibeInformacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         ExibeInformacoes.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ExibeInformacoes.setSelectedTextColor(new java.awt.Color(255, 255, 255));

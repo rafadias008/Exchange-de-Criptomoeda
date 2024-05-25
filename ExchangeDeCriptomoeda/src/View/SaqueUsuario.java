@@ -35,6 +35,8 @@ public class SaqueUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAQUE");
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+
         btDeposito.setText("Confirmar");
         btDeposito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
