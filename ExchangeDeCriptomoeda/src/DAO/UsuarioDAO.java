@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 
@@ -20,6 +22,13 @@ public class UsuarioDAO {
     public UsuarioDAO(Connection conn){
         this.conn = conn;
     }
+    
+    // Obter a data e hora atual
+    LocalDateTime dataHoraAtual = LocalDateTime.now();
+
+    // Formatar a data e hora
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    String dataHoraFormatada = dataHoraAtual.format(formatter);
     
     public double saldoAtual(Usuario user)throws SQLException{
         
@@ -110,7 +119,26 @@ public class UsuarioDAO {
         statement.setDouble(1,valorFuturo);
         statement.setString(2, user.getCpf());
         statement.execute();
+        
+        String sql2 = "INSERT INTO public.extrato(\n" +
+"	data, tipodeoperacao, valor, moeda, real , bitcoin, ethereum, ripple, cpf)\n" +
+"	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?); ";
+        
+        PreparedStatement statement2 = conn.prepareStatement(sql2);
+        statement2.setString(1,dataHoraFormatada);
+        statement2.setString(2, "+");
+        statement2.setDouble(3,user.getReal());
+        statement2.setString(4,"REAIS");
+        statement2.setDouble(5,saldoAtual(user));
+        statement2.setDouble(6,saldoAtualBitcoin(user));
+        statement2.setDouble(7,saldoAtualEthereum(user));
+        statement2.setDouble(8,saldoAtualRipple(user));
+        statement2.setString(9,user.getCpf());
+        statement2.execute();
         conn.close();
+        
+        
+        
         
     }
     
@@ -127,6 +155,22 @@ public class UsuarioDAO {
         statement.setDouble(1,valorFuturo);
         statement.setString(2, user.getCpf());
         statement.execute();
+        
+        String sql2 = "INSERT INTO public.extrato(\n" +
+"	data, tipodeoperacao, valor, moeda, real , bitcoin, ethereum, ripple, cpf)\n" +
+"	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?); ";
+        
+        PreparedStatement statement2 = conn.prepareStatement(sql2);
+        statement2.setString(1,dataHoraFormatada);
+        statement2.setString(2, "-");
+        statement2.setDouble(3,user.getReal());
+        statement2.setString(4,"REAIS");
+        statement2.setDouble(5,saldoAtual(user));
+        statement2.setDouble(6,saldoAtualBitcoin(user));
+        statement2.setDouble(7,saldoAtualEthereum(user));
+        statement2.setDouble(8,saldoAtualRipple(user));
+        statement2.setString(9,user.getCpf());
+        statement2.execute();
         conn.close();
         
     }
@@ -224,23 +268,48 @@ public class UsuarioDAO {
     }
     
     public void atualizarCotacao() throws SQLException {
-    String sql = "SELECT * FROM moedas";
-    PreparedStatement statement = conn.prepareStatement(sql);
-    ResultSet resultado = statement.executeQuery();
+        String sql = "SELECT * FROM moedas";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        ResultSet resultado = statement.executeQuery();
 
-    while (resultado.next()) {
-        String nomeMoeda = resultado.getString("nome");
-        double valorMoeda = resultado.getDouble("valor");
+        while (resultado.next()) {
+            String nomeMoeda = resultado.getString("nome");
+            double valorMoeda = resultado.getDouble("valor");
 
-        double novoValorMoeda = valorMoeda * 0.95; // -5%
+            double novoValorMoeda = valorMoeda * 0.95; // -5%
 
-        sql = "UPDATE moedas SET valor = ? WHERE nome = ?";
-        statement = conn.prepareStatement(sql);
-        statement.setDouble(1, novoValorMoeda);
-        statement.setString(2, nomeMoeda);
-        statement.executeUpdate();
+            sql = "UPDATE moedas SET valor = ? WHERE nome = ?";
+            statement = conn.prepareStatement(sql);
+            statement.setDouble(1, novoValorMoeda);
+            statement.setString(2, nomeMoeda);
+            statement.executeUpdate();
+        }
+
     }
     
-}
+    public void gerarExtratoDeposito(Usuario user)throws SQLException{
+        
+        double valorAtual = saldoAtual(user);
+        double valorFuturo = valorAtual + user.getReal();
+        
+        String sql = "INSERT INTO public.extrato(\n" +
+"	data, tipodeoperacao, valor, moeda, real , bitcoin, ethereum, ripple, cpf)\n" +
+"	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?); ";
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,dataHoraFormatada);
+        statement.setString(2, "+");
+        statement.setDouble(3,valorFuturo);
+        statement.setString(4,"REAIS");
+        statement.setDouble(5,saldoAtual(user));
+        statement.setDouble(6,saldoAtualBitcoin(user));
+        statement.setDouble(7,saldoAtualEthereum(user));
+        statement.setDouble(8,saldoAtualRipple(user));
+        statement.setString(9,user.getCpf());
+        statement.execute();
+        conn.close();
+        
+        
+    }
 
 }

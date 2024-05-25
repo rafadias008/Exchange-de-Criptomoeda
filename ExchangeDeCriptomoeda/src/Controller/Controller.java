@@ -23,6 +23,8 @@ import java.util.Locale;
 import javax.swing.JOptionPane;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -69,6 +71,15 @@ public class Controller {
     public Controller(CompraCripto comprarCripto) {
         this.comprarCripto = comprarCripto;
     }
+    
+    // Obter a data e hora atual
+    LocalDateTime dataHoraAtual = LocalDateTime.now();
+
+    // Formatar a data e hora
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    String dataHoraFormatada = dataHoraAtual.format(formatter);
+
+    
     
     
     public void btLogin(){
@@ -123,12 +134,13 @@ public class Controller {
             System.out.println("conectou");
             UsuarioDAO dao = new UsuarioDAO(conn);
             System.out.println("criou dao");
+            double saldoFuturo = dao.saldoAtual(user) + valorDeposito;
             dao.Deposito(user);
             System.out.println("Funcionou");
             
                 
             NumberFormat formatter = NumberFormat.getIntegerInstance(new Locale("pt", "BR"));
-            String saldoFormatado = formatter.format(user.getReal());
+            String saldoFormatado = formatter.format(saldoFuturo);
             
             JOptionPane.showMessageDialog(deposito, "Saldo atual: R$ "+
                         saldoFormatado,"Aviso",JOptionPane.INFORMATION_MESSAGE);
@@ -153,12 +165,13 @@ public class Controller {
             Connection conn  = conexao.getConnection();
             System.out.println("conectou");
             UsuarioDAO dao = new UsuarioDAO(conn);
+            double saldoFuturo = dao.saldoAtual(user) - valorSaque;
             System.out.println("criou dao");
             dao.Saque(user);
             
                 
             NumberFormat formatter = NumberFormat.getIntegerInstance(new Locale("pt", "BR"));
-            String saldoFormatado = formatter.format(user.getReal());
+            String saldoFormatado = formatter.format(saldoFuturo);
             
             JOptionPane.showMessageDialog(deposito, "Saldo atual: R$ "+
                         saldoFormatado,"Aviso",JOptionPane.INFORMATION_MESSAGE);
