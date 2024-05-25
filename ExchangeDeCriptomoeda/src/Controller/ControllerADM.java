@@ -117,20 +117,85 @@ public class ControllerADM {
         
         Conexao conexao = new Conexao();
         
+        boolean hasError = false;
+        
         try{
             Connection conn  = conexao.getConnection();
             System.out.println("conectou");
-            AdministradorDAO dao = new AdministradorDAO(conn);
-            System.out.println("criou dao");
-            dao.createdInvest(user);
             
+            //Exceção para quantidade de numeros digitados no campo do cpf
+            try {
+                if (CadInvest.getTxtCpf().getText().length() != 11) {
+                    throw new IllegalArgumentException("CPF inválido."
+                                             +" Deve conter exatamente 11 dígitos.");
+                }
+
+            } catch (IllegalArgumentException e) {
+                System.err.println("Exceção: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "CPF inválido. Deve conter exatamente 11 dígitos.", "Erro", JOptionPane.ERROR_MESSAGE);
+                hasError = true;
+
+            }
+
+
+            //Exceção para identificar digitos alem de numeros 
+            try {
+                Long.parseLong(CadInvest.getTxtCpf().getText()); 
+
+            } catch (NumberFormatException e) {
+                System.err.println("Exceção: " + e.getMessage());
+                JOptionPane.showMessageDialog(null,"CPF invalido, Digite apenas números !","Erro",JOptionPane.ERROR_MESSAGE);
+                hasError = true;
+
+            }
+
+            //Exceção para quantidade de numeros digitados no campo do cpf
+            try {
+                if (CadInvest.getTxtSenha().getText().length() != 6) {
+                    throw new IllegalArgumentException("Senha Inválida."
+                                             +" Deve conter exatamente 6 dígitos.");
+                }
+
+            } catch (IllegalArgumentException e) {
+                System.err.println("Exceção: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Senha Inválida, deve conter 6 digitos",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+                hasError = true;
+
+            }
+
+            //Exceção para identificar digitos alem de numeros 
+            try {
+                Long.parseLong(CadInvest.getTxtSenha().getText()); 
+
+            } catch (NumberFormatException e) {
+                System.err.println("Exceção: " + e.getMessage());
+                JOptionPane.showMessageDialog(null,"Senha invalida, somente numeros!","Erro",JOptionPane.ERROR_MESSAGE);
+              hasError = true;
+            }
+            if(!hasError){
+
+                try{
+
+                AdministradorDAO dao = new AdministradorDAO(conn);
+                System.out.println("criou dao");
+                dao.createdInvest(user);
+
+
+                JOptionPane.showMessageDialog(CadInvest, "Investidor Criado");
+
+
+                }catch(SQLException e){
+                    JOptionPane.showMessageDialog(CadInvest, "CPF já existente!");
+                }
+            }
             
-            JOptionPane.showMessageDialog(CadInvest, "Investidor Criado");
-                
-            
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(CadInvest, "Erro de conexão!");
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(CadInvest, e);
         }
+        
+        
+        
     
     }
     
