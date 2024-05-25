@@ -82,6 +82,11 @@ public class PaginaUser extends javax.swing.JFrame {
 
         btVenderCripto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btVenderCripto.setText("Vender Criptomoeda");
+        btVenderCripto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVenderCriptoActionPerformed(evt);
+            }
+        });
 
         btAtualizarCota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btAtualizarCota.setText("Atualizar Cotação");
@@ -243,6 +248,12 @@ public class PaginaUser extends javax.swing.JFrame {
     private void btAtualizarCotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarCotaActionPerformed
         control.atualizarCotacao();
     }//GEN-LAST:event_btAtualizarCotaActionPerformed
+
+    private void btVenderCriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVenderCriptoActionPerformed
+        venderCripto venderCripto = new venderCripto();
+        
+        venderCripto.setVisible(true);
+    }//GEN-LAST:event_btVenderCriptoActionPerformed
 
     
 

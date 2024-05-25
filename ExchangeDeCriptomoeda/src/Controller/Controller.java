@@ -13,6 +13,7 @@ import View.DepositoUsuario;
 import View.Login;
 import View.PaginaUser;
 import View.SaqueUsuario;
+import View.venderCripto;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,6 +39,7 @@ public class Controller {
     private ConsultaSaldo consulta;
     private ConsultaExtrato consultaExtrato;
     private CompraCripto comprarCripto;
+    private venderCripto venderCripto;
     
     
     public Controller(Login login){
@@ -54,6 +56,9 @@ public class Controller {
     }
     public Controller(ConsultaExtrato consultaExtrato){
         this.consultaExtrato = consultaExtrato;
+    }
+    public Controller(venderCripto venderCripto){
+        this.venderCripto = venderCripto;
     }
     
 
@@ -327,12 +332,9 @@ public class Controller {
                 statement1.setString(2, comprarCripto.getTxtCpf().getText());
                 statement1.execute();
                 
-                System.out.println("\n\nSaldo anterior: " + dao.saldoCripto(user));
-                
                 //variavel para somar o saldo da criptomoeda
                 double saldo = dao.saldoCripto(user) + calculoCriptos;
                 
-                System.out.println("\n\nNovo saldo: " + saldo );
                 
                 //atualiza o saldo da cripto
                 String sql = "update carteira set "+comprarCripto.getTxtNomeCripto().getText()+
@@ -357,6 +359,121 @@ public class Controller {
         }catch(SQLException e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(comprarCripto, "Erro de conexão!");
+        }
+        
+    }
+    
+    public void consultarMoedasVendas() {
+        try {
+            Conexao conexao = new Conexao();
+            Connection conn = conexao.getConnection();
+
+            String sql = "select * from moedas;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet resultado = statement.executeQuery();
+
+            StringBuilder string = new StringBuilder();
+
+            while (resultado.next()) {
+                string.append("").append(resultado.getString("nome").toUpperCase())
+                      .append("     Valor: R$ ").append(resultado.getDouble("valor"))
+                      .append("   Taxa de Compra: ").append(resultado.getDouble("txcompra"))
+                      .append("%\n");
+            }
+
+            venderCripto.getTxtMoedas().setText(string.toString());
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void venderCriptomoeda(){
+        
+        double quantidadeCripto = Double.parseDouble(venderCripto.getTxtQuantidadeCripto().getText());
+        
+        Usuario user = new Usuario(null,venderCripto.getTxtCpf().getText(),
+                              venderCripto.getTxtSenha().getText(),
+                              venderCripto.getTxtNomeCripto().getText().toLowerCase());
+        
+        Moedas moeda = new Moedas(venderCripto.getTxtNomeCripto().getText().toLowerCase(),
+                                  quantidadeCripto);
+        
+        Conexao conexao = new Conexao();
+              
+        try{
+            Connection conn  = conexao.getConnection();
+            System.out.println("conectou");
+            UsuarioDAO dao = new UsuarioDAO(conn);
+            System.out.println("criou dao");
+            ResultSet res = dao.consultarLogin(user);
+            
+            
+            
+            if(res.next()){
+                
+                String nome = res.getString("nome");
+                String cpf = res.getString("cpf");
+                String senha = res.getString("senha");
+                
+                
+                
+                if (dao.saldoCripto(user) - moeda.getValor() < 0){
+                   
+                    JOptionPane.showMessageDialog(venderCripto,"Saldo insufiente");
+                    return;
+                }
+                
+                //valores da moeda
+                double valorMoeda = dao.valorMoeda(moeda);
+                double txVenda = dao.valorTxVenda(moeda);
+                
+                //calculos de taxa e valor a receber
+                double valorReais = quantidadeCripto * valorMoeda;
+                double calculoTxVenda = valorReais * txVenda;
+                double valorAReceber = valorReais - calculoTxVenda;
+               
+                
+                double saldoRestante = dao.saldoAtual(user) + valorAReceber;
+                
+                //atualiza o saldo em reais
+                String sql1 = "update carteira set reais = ? where cpf = ?";
+        
+                PreparedStatement statement1 = conn.prepareStatement(sql1);
+                statement1.setDouble(1, saldoRestante);
+                statement1.setString(2, venderCripto.getTxtCpf().getText());
+                statement1.execute();
+             
+                
+                //variavel para somar o saldo da criptomoeda
+                double saldo = dao.saldoCripto(user) - quantidadeCripto;
+                
+               
+                //atualiza o saldo da cripto
+                String sql = "update carteira set "+venderCripto.getTxtNomeCripto().getText()+
+                             " = ? where cpf = ?";
+        
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setDouble(1, saldo);
+                statement.setString(2, venderCripto.getTxtCpf().getText());
+                statement.execute();
+                conn.close();
+                
+                JOptionPane.showMessageDialog(venderCripto,"Compra Realizada com Sucesso\n\n"
+                        + "Criptomoeda: " + venderCripto.getTxtNomeCripto().getText()+"\n"
+                        + "\nQuantidade em criptomoeda: R$ " + moeda.getValor() + 
+                          "\nTaxa: " + calculoTxVenda
+                        + "\nValor recebido: R$ " + valorReais);
+                
+                    
+            } else {
+                JOptionPane.showMessageDialog(venderCripto, "Usuário não encontrado");
+            }
+                        
+        }catch(SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(venderCripto, "Erro de conexão!");
         }
         
     }

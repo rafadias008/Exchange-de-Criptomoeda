@@ -29,7 +29,7 @@ public class AdministradorDAO {
         
         String sql =  "select * from administrador where cpf = ? and senha = ?";
         
-        System.out.println(sql);
+        
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1,admin.getCpf());
         statement.setString(2,admin.getSenha());
@@ -72,7 +72,7 @@ public class AdministradorDAO {
                     "   \n" +
                     "delete from usuarios where cpf = ?;";
         
-        System.out.println(sql);
+        
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, usuario.getCpf());
@@ -91,7 +91,7 @@ public class AdministradorDAO {
                         "	nome, valor,txcompra,txvenda)\n" +
                         "	VALUES (?,?,?,?);";
         
-        System.out.println(sql);
+     
         double txCompra = moeda.getTxCompra() / 100;
         double txVenda = moeda.getTxVenda() / 100;
         
@@ -109,7 +109,7 @@ public class AdministradorDAO {
         String sql = "alter table carteira drop column "+moeda.getCripto()+";"+
                 "\ndelete from moedas where nome = ?;";
         
-        System.out.println(sql);
+       
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, moeda.getCripto());
@@ -122,7 +122,7 @@ public class AdministradorDAO {
         
         String sql =  "select * from usuarios where cpf = ?";
         
-        System.out.println(sql);
+        
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, user.getCpf());
         statement.execute();

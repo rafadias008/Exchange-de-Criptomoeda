@@ -104,7 +104,7 @@ public class UsuarioDAO {
         
         String sql = "update carteira set reais = ? where cpf = ?";
         
-        System.out.println(sql);
+        
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setDouble(1,valorFuturo);
@@ -121,7 +121,7 @@ public class UsuarioDAO {
         
         String sql = "update carteira set reais = ? where cpf = ?";
         
-        System.out.println(sql);
+        
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setDouble(1,valorFuturo);
@@ -135,7 +135,7 @@ public class UsuarioDAO {
         
         String sql = "SELECT * FROM public.extrato where cpf = ?";
         
-        System.out.println(sql);
+        
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1,user.getCpf());
@@ -160,7 +160,7 @@ public class UsuarioDAO {
         
         String sql = "SELECT valor FROM public.moedas where nome=?";
         
-        System.out.println(sql);
+       
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1,moeda.getCripto());
@@ -177,7 +177,7 @@ public class UsuarioDAO {
         
         String sql = "SELECT txcompra FROM public.moedas where nome=?";
         
-        System.out.println(sql);
+        
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1,moeda.getCripto());
@@ -190,11 +190,25 @@ public class UsuarioDAO {
         return valorTxCompra;
     }
     
+    public Double valorTxVenda(Moedas moeda) throws SQLException{
+        
+        String sql = "SELECT txvenda FROM public.moedas where nome=?";
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1,moeda.getCripto());
+        ResultSet res =  statement.executeQuery();
+        
+        double valorTxVenda = 0;
+        if (res.next()){
+            valorTxVenda = res.getDouble("txvenda");  
+        } 
+        return valorTxVenda;
+    }
+    
     public Double saldoCripto(Usuario user) throws SQLException{
         
         String sql = "SELECT * FROM carteira where cpf = ?";
         
-        System.out.println(sql);
         
         PreparedStatement statement = conn.prepareStatement(sql);
         //statement.setString(1,user.getCripto());
