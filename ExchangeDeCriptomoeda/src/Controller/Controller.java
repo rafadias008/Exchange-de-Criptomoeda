@@ -202,63 +202,63 @@ public class Controller {
  
     }
     
-    public void btConsultarSaldo(){
-        
-        Usuario user = new Usuario(null,consulta.getTxtCPF().getText(),
-                              consulta.getTxtSenha().getText());
-        
-        Conexao conexao = new Conexao();
-        
-        try{
-            Connection conn  = conexao.getConnection();
-            System.out.println("conectou");
-            UsuarioDAO dao = new UsuarioDAO(conn);
-            System.out.println("criou dao");
-            ResultSet res = dao.consultarLogin(user);
-            System.out.println("resultado");
-            
-            
-            if(res.next()){
-                
-                String nome = res.getString("nome");
-                String cpf = res.getString("cpf");
-                String senha = res.getString("senha");
-                
-                double saldoReal = dao.saldoAtual(user);
-                double saldoBit = dao.saldoAtualBitcoin(user);
-                double saldoEthe = dao.saldoAtualEthereum(user);
-                double saldoRipple = dao.saldoAtualRipple(user);
-                
-                
-                JOptionPane.showMessageDialog(consulta, "NOME: "+nome+
-                    "\nCPF: " + cpf + "\n\nReal: " + saldoReal+ "\nBitcoin: "+ saldoBit +
-                    "\nEthereum: "+saldoEthe+"\nRipple: " + saldoRipple);
-                    
-            } else {
-                JOptionPane.showMessageDialog(login, "Usuário não encontrado");
-            }
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(login, "Erro de conexão!");
+public void btConsultarSaldo(){
+
+    Usuario user = new Usuario(null,consulta.getTxtCPF().getText(),
+                          consulta.getTxtSenha().getText());
+
+    Conexao conexao = new Conexao();
+
+    try{
+        Connection conn  = conexao.getConnection();
+        System.out.println("conectou");
+        UsuarioDAO dao = new UsuarioDAO(conn);
+        System.out.println("criou dao");
+        ResultSet res = dao.consultarLogin(user);
+        System.out.println("resultado");
+
+
+        if(res.next()){
+
+            String nome = res.getString("nome");
+            String cpf = res.getString("cpf");
+            String senha = res.getString("senha");
+
+            double saldoReal = dao.saldoAtual(user);
+            double saldoBit = dao.saldoAtualBitcoin(user);
+            double saldoEthe = dao.saldoAtualEthereum(user);
+            double saldoRipple = dao.saldoAtualRipple(user);
+
+
+            JOptionPane.showMessageDialog(consulta, "NOME: "+nome+
+                "\nCPF: " + cpf + "\n\nReal: " + saldoReal+ "\nBitcoin: "+ saldoBit +
+                "\nEthereum: "+saldoEthe+"\nRipple: " + saldoRipple);
+
+        } else {
+            JOptionPane.showMessageDialog(login, "Usuário não encontrado");
         }
+    }catch(SQLException e){
+        JOptionPane.showMessageDialog(login, "Erro de conexão!");
     }
-    
-    public void btConsultaExtrato(){
-        
-        Usuario user = new Usuario(null,consultaExtrato.getTxtCPF().getText(),
-                              consultaExtrato.getTxtSenha().getText());
-        
-        Conexao conexao = new Conexao();
-        
-        try{
-            Connection conn  = conexao.getConnection();
-            System.out.println("conectou");
-            UsuarioDAO dao = new UsuarioDAO(conn);
-            System.out.println("criou dao");
-            ResultSet res = dao.consultarLogin(user);
-            System.out.println("resultado");
-            
-            
-            if(res.next()){
+}
+
+public void btConsultaExtrato(){
+
+    Usuario user = new Usuario(null,consultaExtrato.getTxtCPF().getText(),
+                          consultaExtrato.getTxtSenha().getText());
+
+    Conexao conexao = new Conexao();
+
+    try{
+        Connection conn  = conexao.getConnection();
+        System.out.println("conectou");
+        UsuarioDAO dao = new UsuarioDAO(conn);
+        System.out.println("criou dao");
+        ResultSet res = dao.consultarLogin(user);
+        System.out.println("resultado");
+
+
+        if(res.next()){
                 
                 String nome = res.getString("nome");
                 String cpf = res.getString("cpf");
