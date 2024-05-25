@@ -134,19 +134,27 @@ public class Controller {
             System.out.println("conectou");
             UsuarioDAO dao = new UsuarioDAO(conn);
             System.out.println("criou dao");
-            double saldoFuturo = dao.saldoAtual(user) + valorDeposito;
-            dao.Deposito(user);
-            System.out.println("Funcionou");
+            
+            ResultSet res = dao.consultarCPF(user);
+            
+            if(res.next()){
+                double saldoFuturo = dao.saldoAtual(user) + valorDeposito;
+                dao.Deposito(user);
+                System.out.println("Funcionou");
             
                 
-            NumberFormat formatter = NumberFormat.getIntegerInstance(new Locale("pt", "BR"));
-            String saldoFormatado = formatter.format(saldoFuturo);
-            
-            JOptionPane.showMessageDialog(deposito, "Saldo atual: R$ "+
+                NumberFormat formatter = NumberFormat.getIntegerInstance(new Locale("pt", "BR"));
+                String saldoFormatado = formatter.format(saldoFuturo);
+
+                JOptionPane.showMessageDialog(deposito, "Saldo atual: R$ "+
                         saldoFormatado,"Aviso",JOptionPane.INFORMATION_MESSAGE);
+            } else{
+                JOptionPane.showMessageDialog(deposito, "CPF invalido!");
+            }
+            
         }catch(SQLException e){
             e.printStackTrace();
-            JOptionPane.showMessageDialog(deposito, "Usuário ou senha incorreta!"
+            JOptionPane.showMessageDialog(deposito, "Erro de conexão"
                                ,"Erro",JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -157,7 +165,7 @@ public class Controller {
                                                     getText());
         
         Usuario user = new Usuario(null,saque.getTxtCPF().getText(),
-                              null,valorSaque);
+                              saque.getTxtSenha().getText(),valorSaque);
         
         Conexao conexao = new Conexao();
         
@@ -165,18 +173,30 @@ public class Controller {
             Connection conn  = conexao.getConnection();
             System.out.println("conectou");
             UsuarioDAO dao = new UsuarioDAO(conn);
-            double saldoFuturo = dao.saldoAtual(user) - valorSaque;
-            System.out.println("criou dao");
-            dao.Saque(user);
+            ResultSet res = dao.consultarLogin(user);
             
+            if(res.next()){
+                double saldoFuturo = dao.saldoAtual(user) - valorSaque;
                 
-            NumberFormat formatter = NumberFormat.getIntegerInstance(new Locale("pt", "BR"));
-            String saldoFormatado = formatter.format(saldoFuturo);
-            
-            JOptionPane.showMessageDialog(deposito, "Saldo atual: R$ "+
+                if(saldoFuturo < 0){
+                    JOptionPane.showMessageDialog(saque, "Saldo insuficiente");
+                    return;
+                }
+                System.out.println("criou dao");
+                dao.Saque(user);
+
+
+                NumberFormat formatter = NumberFormat.getIntegerInstance(new Locale("pt", "BR"));
+                String saldoFormatado = formatter.format(saldoFuturo);
+
+                JOptionPane.showMessageDialog(deposito, "Saldo atual: R$ "+
                         saldoFormatado,"Aviso",JOptionPane.INFORMATION_MESSAGE);
+            } else{
+                JOptionPane.showMessageDialog(saque, "Usuário ou senha incorreto!");
+            }
+            
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(deposito, "Usuário ou senha incorreta!"
+            JOptionPane.showMessageDialog(deposito, "Erro de conexão!"
                                ,"Erro",JOptionPane.ERROR_MESSAGE);
         }
  

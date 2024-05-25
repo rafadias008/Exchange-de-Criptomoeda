@@ -4,6 +4,7 @@ package View;
 import Controller.Controller;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
@@ -28,8 +29,8 @@ public class SaqueUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         lblUsuario1 = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JTextField();
         lblUsuario2 = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -80,14 +81,14 @@ public class SaqueUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblUsuario1)
-                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                             .addComponent(lblUsuario2)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(61, 61, 61)
-                                .addComponent(btDeposito))))
+                                .addComponent(btDeposito))
+                            .addComponent(txtSenha)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,6 +196,16 @@ public class SaqueUsuario extends javax.swing.JFrame {
     public void setTxtValorSaque(JTextField txtValorSaque) {
         this.txtValorSaque = txtValorSaque;
     }
+
+    public JPasswordField getTxtSenha() {
+        return txtSenha;
+    }
+
+    public void setTxtSenha(JPasswordField txtSenha) {
+        this.txtSenha = txtSenha;
+    }
+
+    
     
     
     
@@ -211,7 +222,7 @@ public class SaqueUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsuario1;
     private javax.swing.JLabel lblUsuario2;
     private javax.swing.JTextField txtCPF;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtValorSaque;
     // End of variables declaration//GEN-END:variables
 }

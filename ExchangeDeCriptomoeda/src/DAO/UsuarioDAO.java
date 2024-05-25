@@ -106,6 +106,21 @@ public class UsuarioDAO {
         
     }
     
+    public ResultSet consultarCPF(Usuario user) throws SQLException{
+
+        
+        String sql =  "select * from usuarios where cpf = ?";
+        
+        System.out.println(sql);
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, user.getCpf());
+        statement.execute();
+        ResultSet resultado = statement.executeQuery();
+        return resultado;
+        
+    }
+    
+    
     public void Deposito(Usuario user) throws SQLException{
         
         double valorAtual = saldoAtual(user);
