@@ -29,6 +29,13 @@ public class Usuario {
         this.cpf = cpf;
         this.senha = senha;
     }
+
+    public Usuario(String nome, String cpf, String senha, String cripto) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.senha = senha;
+        this.cripto = cripto;
+    }
     
     
 

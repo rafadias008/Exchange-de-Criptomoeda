@@ -276,20 +276,20 @@ public class Controller {
         double quantidadeReais = Double.parseDouble(comprarCripto.getTxtQuantidadeReais().getText());
         
         Usuario user = new Usuario(null,comprarCripto.getTxtCpf().getText(),
-                              comprarCripto.getTxtSenha().getText());
+                              comprarCripto.getTxtSenha().getText(),combo);
         
         Moedas moeda = new Moedas(combo,quantidadeReais);
         
-        
-        
         Conexao conexao = new Conexao();
-        
+              
         try{
             Connection conn  = conexao.getConnection();
             System.out.println("conectou");
             UsuarioDAO dao = new UsuarioDAO(conn);
             System.out.println("criou dao");
             ResultSet res = dao.consultarLogin(user);
+            
+            
             
             if(res.next()){
                 
@@ -305,29 +305,41 @@ public class Controller {
                     return;
                 }
                 
+                //valores da moeda
                 double valorMoeda = dao.valorMoeda(moeda);
                 double txCompra = dao.valorTxCompra(moeda);
                 
-                
-                
-                
+                //calculos das taxas e moedas
                 double calculoTaxa = moeda.getValor() * txCompra;
                 double valorComprado = moeda.getValor() - calculoTaxa;
                 double calculoCriptos = valorComprado / valorMoeda;
+               
                 
+                double saldoRestante = dao.saldoAtual(user) - moeda.getValor();
                 
+                //atualiza o saldo em reais
+                String sql1 = "update carteira set reais = ? where cpf = ?";
+        
+                PreparedStatement statement1 = conn.prepareStatement(sql1);
+                statement1.setDouble(1, saldoRestante);
+                statement1.setString(2, comprarCripto.getTxtCpf().getText());
+                statement1.execute();
                 
-                System.out.println("Reais: " + valorComprado);
-                System.out.println("Cripto: " + calculoCriptos);
-                System.out.println("Taxa: " + calculoTaxa);
+                double saldo = dao.saldoCripto(user) + calculoCriptos;
                 
+                //atualiza o saldo da cripto
                 String sql = "update carteira set "+combo+" = ? where cpf = ?";
         
                 PreparedStatement statement = conn.prepareStatement(sql);
-                statement.setDouble(1, calculoCriptos);
+                statement.setDouble(1, saldo);
                 statement.setString(2, comprarCripto.getTxtCpf().getText());
                 statement.execute();
                 conn.close();
+                
+                JOptionPane.showMessageDialog(comprarCripto,"Compra Realizada com Sucesso\n\n"
+                        + "Criptomoeda: " + combo+"\n"
+                        + "\nValor em Reais: R$ " + moeda.getValor() + "\nTaxa: " + calculoTaxa
+                        + "\nQuantidade comprada: " + calculoCriptos);
                 
                     
             } else {

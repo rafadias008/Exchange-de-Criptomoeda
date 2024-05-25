@@ -190,15 +190,23 @@ public class UsuarioDAO {
         return valorTxCompra;
     }
     
-    public void atualizarSaldoCripto(Usuario user) throws SQLException{
-    
-        String sql = "update carteira set ? = ? where cpf = ?";
+    public Double saldoCripto(Usuario user) throws SQLException{
+        
+        String sql = "SELECT * FROM carteira where cpf = ?";
+        
+        System.out.println(sql);
         
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setDouble(1,user.getReal());
-        statement.setString(2, user.getCpf());
-        statement.execute();
-        conn.close();
+        //statement.setString(1,user.getCripto());
+        statement.setString(1,user.getCpf());
+        ResultSet res =  statement.executeQuery();
+        
+        double saldoCripto = 0;
+        if (res.next()){
+            System.out.println(res.getDouble(user.getCripto()));
+            //saldoCripto = res.getDouble(user.getCripto());  
+        } 
+        return saldoCripto;
     }
     
     public void atualizarCotacao() throws SQLException {
