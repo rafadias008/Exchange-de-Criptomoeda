@@ -114,7 +114,12 @@ public class Controller {
                 
                     
             } else {
-                JOptionPane.showMessageDialog(login, "Usuário ou senha incorreta!");
+                
+                JOptionPane.showMessageDialog(login, "Usuário ou senha incorreta!",
+                        "Aviso",JOptionPane.INFORMATION_MESSAGE);
+                
+                Login logi = new Login();
+                logi.setVisible(true);
             }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(login, "Erro de conexão!");
