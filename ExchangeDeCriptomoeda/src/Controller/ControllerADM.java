@@ -24,7 +24,6 @@ import java.util.Map;
 
 public class ControllerADM {
 
-    // Declara as variáveis para diferentes views
     private LoginADM loginADM;
     private CadastroInvest CadInvest;
     private DeletaInvest DelInvest;
@@ -69,7 +68,7 @@ public class ControllerADM {
 
     // Método para realizar o login do administrador
     public void btLoginADM() {
-        // Cria um objeto Administrador com os dados do login
+        // Cria um objeto Administrador com os dados do login cpf e senha
         Administrador userADM = new Administrador(null, loginADM.getLoginCPF().getText(),
                 loginADM.getLoginSenha().getText());
 
@@ -84,32 +83,32 @@ public class ControllerADM {
             ResultSet res = dao.consultarLoginADM(userADM); // Consulta o login do administrador
             System.out.println("resultado");
 
-            if (res.next()) { // Se o login for bem-sucedido
+            if (res.next()) { // Se o login estiver certo
                 PaginaADM PA = new PaginaADM();
 
-                // Obtém os dados do administrador
+                // pega os dados do administrador
                 String nome = res.getString("nome");
                 String cpf = res.getString("cpf");
                 String senha = res.getString("senha");
 
-                PA.setVisible(true); // Torna a página de administrador visível
+                PA.setVisible(true); // Mostra a página de administrador 
                 PA.setLocationRelativeTo(null); // Centraliza a janela
-            } else {
-                JOptionPane.showMessageDialog(loginADM, "Login não efetuado!"); // Exibe mensagem de erro
+            } else { //se estiver com cpf ou senha errados
+                JOptionPane.showMessageDialog(loginADM, "Login não efetuado!"); 
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(loginADM, "Erro de conexão!"); // Exibe mensagem de erro de conexão
+        } catch (SQLException e) { //se a conexão com o sql der erro
+            JOptionPane.showMessageDialog(loginADM, "Erro de conexão!"); 
         }
     }
 
-    // Método para criar um novo investidor
+    // criar um novo investidor
     public void btCreatedInvest() {
         Usuario user = new Usuario(CadInvest.getTxtNome().getText(), CadInvest.getTxtCpf().getText(),
                 CadInvest.getTxtSenha().getText(), 0);
 
         Conexao conexao = new Conexao();
 
-        boolean hasError = false; // Flag para verificar se houve erro
+        boolean hasError = false; // verifica se houve erro
 
         try {
             Connection conn = conexao.getConnection(); // Obtém a conexão
@@ -135,7 +134,7 @@ public class ControllerADM {
                 hasError = true;
             }
 
-            // Verifica se a senha tem 6 dígitos
+            // Verifica se a senha tem 6 números
             try {
                 if (CadInvest.getTxtSenha().getText().length() != 6) {
                     throw new IllegalArgumentException("Senha Inválida. Deve conter exatamente 6 dígitos.");
@@ -186,17 +185,18 @@ public class ControllerADM {
                 System.out.println("criou dao");
                 dao.deletarInvest(user); // Deleta o investidor
 
-                JOptionPane.showMessageDialog(CadInvest, "Investidor Deletado!"); // Exibe mensagem de sucesso
+                JOptionPane.showMessageDialog(CadInvest, "Investidor Deletado!"); 
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(CadInvest, "CPF inválido"); // Exibe mensagem de erro
+                JOptionPane.showMessageDialog(CadInvest, "CPF inválido"); 
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(CadInvest, "Erro de conexão!"); // Exibe mensagem de erro de conexão
+            JOptionPane.showMessageDialog(CadInvest, "Erro de conexão!"); 
         }
     }
 
     // Método para cadastrar uma nova criptomoeda
     public void btCadastrarCripto() {
+        // pega os valores da caixa de texto da view
         double valor = Double.parseDouble(CadCripto.getTxtValorMoeda().getText());
         double txCompra = Double.parseDouble(CadCripto.getTxtTaxaCompra().getText());
         double txVenda = Double.parseDouble(CadCripto.getTxtTaxaVenda().getText());
@@ -208,13 +208,13 @@ public class ControllerADM {
         try {
             Connection conn = conexao.getConnection(); // Obtém a conexão
             System.out.println("conectou");
-            AdministradorDAO dao = new AdministradorDAO(conn); // Cria um objeto DAO para administrador
+            AdministradorDAO dao = new AdministradorDAO(conn); // Cria um objeto DAO 
             System.out.println("criou dao");
             dao.criarCripto(moeda); // Cria a criptomoeda
 
-            JOptionPane.showMessageDialog(CadCripto, "Criptomoeda criada!"); // Exibe mensagem de sucesso
+            JOptionPane.showMessageDialog(CadCripto, "Criptomoeda criada!"); 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(CadCripto, e); // Exibe mensagem de erro
+            JOptionPane.showMessageDialog(CadCripto, e); 
             System.out.println(e);
         }
     }
@@ -228,13 +228,13 @@ public class ControllerADM {
         try {
             Connection conn = conexao.getConnection(); // Obtém a conexão
             System.out.println("conectou");
-            AdministradorDAO dao = new AdministradorDAO(conn); // Cria um objeto DAO para administrador
+            AdministradorDAO dao = new AdministradorDAO(conn); // Cria um objeto DAO 
             System.out.println("criou dao");
             dao.DeletarCripto(moeda); // Deleta a criptomoeda
 
-            JOptionPane.showMessageDialog(DelCripto, "Criptomoeda deletada!"); // Exibe mensagem de sucesso
+            JOptionPane.showMessageDialog(DelCripto, "Criptomoeda deletada!"); 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(DelCripto, "Criptomoeda não encontrada!"); // Exibe mensagem de erro
+            JOptionPane.showMessageDialog(DelCripto, "Criptomoeda não encontrada!"); 
             System.out.println(e);
         }
     }
@@ -250,7 +250,7 @@ public class ControllerADM {
             System.out.println("conectou");
             UsuarioDAO dao = new UsuarioDAO(conn); // Cria um objeto DAO para usuário
             System.out.println("criou dao");
-            AdministradorDAO dao2 = new AdministradorDAO(conn); // Cria um objeto DAO para administrador
+            AdministradorDAO dao2 = new AdministradorDAO(conn); // Cria um objeto DAO
             ResultSet res = dao2.consultarUsuario(user); // Consulta o usuário
             System.out.println("resultado");
 
@@ -319,11 +319,11 @@ public class ControllerADM {
         try {
             Conexao conexao = new Conexao();
             Connection conn = conexao.getConnection(); // Obtém a conexão
-            AdministradorDAO dao = new AdministradorDAO(conn); // Cria um objeto DAO para administrador
+            AdministradorDAO dao = new AdministradorDAO(conn); // Cria um objeto DAO 
             dao.atualizarCotacao(); // Atualiza a cotação
-            JOptionPane.showMessageDialog(null, "Cotação atualizada com sucesso!"); // Exibe mensagem de sucesso
+            JOptionPane.showMessageDialog(null, "Cotação atualizada com sucesso!"); 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar a cotação: " + e.getMessage()); // Exibe mensagem de erro
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a cotação: " + e.getMessage()); 
         }
     }
 }

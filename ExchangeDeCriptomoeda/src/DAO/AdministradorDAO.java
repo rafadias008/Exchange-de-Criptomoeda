@@ -2,44 +2,41 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAO; // Declaração do pacote onde esta classe está localizada
+package DAO; 
+import Model.Administrador; 
+import Model.Moedas; 
+import Model.Usuario; 
+import java.sql.Connection; 
+import java.sql.PreparedStatement; 
+import java.sql.ResultSet; 
+import java.sql.SQLException;
 
-import Model.Administrador; // Importa a classe Administrador do pacote Model
-import Model.Moedas; // Importa a classe Moedas do pacote Model
-import Model.Usuario; // Importa a classe Usuario do pacote Model
-import java.sql.Connection; // Importa a classe Connection para gerenciar a conexão com o banco de dados
-import java.sql.PreparedStatement; // Importa a classe PreparedStatement para executar instruções SQL pré-compiladas
-import java.sql.ResultSet; // Importa a classe ResultSet para armazenar e manipular os resultados de uma consulta SQL
-import java.sql.SQLException; // Importa a classe SQLException para tratar exceções de SQL
 
-/**
- * Classe AdministradorDAO para acessar e manipular dados de administradores no banco de dados.
- */
 public class AdministradorDAO {
     
-    private Connection conn; // Declaração de uma variável de instância para a conexão com o banco de dados
+    private Connection conn; // variável para  onexão com o banco de dados
     
     public AdministradorDAO(Connection conn){
-        this.conn = conn; // Inicializa a variável de instância com a conexão passada como argumento
+        this.conn = conn; // Inicializa a variável com a conexão passada como argumento
     }
     
     public ResultSet consultarLoginADM(Administrador admin) throws SQLException{
-        // Define a consulta SQL para selecionar um administrador pelo CPF e senha
+        // define a consulta SQL para selecionar um administrador pelo CPF e senha
         String sql =  "select * from administrador where cpf = ? and senha = ?";
         
-        // Prepara a instrução SQL com a conexão
+        // prepara a instrução SQL com a conexão
         PreparedStatement statement = conn.prepareStatement(sql);
-        // Define os valores dos parâmetros na consulta
+        // define os valores dos parâmetros na consulta
         statement.setString(1, admin.getCpf());
         statement.setString(2, admin.getSenha());
-        statement.execute(); // Executa a instrução SQL
-        // Executa a consulta e retorna os resultados
+        statement.execute(); // executa a instrução SQL
+        // executa a consulta e retorna os resultados
         ResultSet resultado = statement.executeQuery();
         return resultado;
     }
     
     public void createdInvest(Usuario usuario) throws SQLException{
-        // Define a instrução SQL para inserir um novo usuário e criar uma carteira para ele
+        // define a instrução SQL para inserir um novo usuário e criar uma carteira para ele
         String sql = """
                      INSERT INTO public.usuarios(
                      \tnome,senha,cpf)
@@ -48,9 +45,9 @@ public class AdministradorDAO {
                      insert into carteira (cpf) 
                      \tvalues (?);""";
         
-        // Prepara a instrução SQL com a conexão
+        // prepara a instrução SQL com a conexão
         PreparedStatement statement = conn.prepareStatement(sql);
-        // Define os valores dos parâmetros na instrução SQL
+        // define os valores dos parâmetros na instrução SQL
         statement.setString(1, usuario.getNome());
         statement.setString(2, usuario.getSenha());
         statement.setString(3, usuario.getCpf());
