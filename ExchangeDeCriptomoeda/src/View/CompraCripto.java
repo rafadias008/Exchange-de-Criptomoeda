@@ -171,8 +171,11 @@ public class CompraCripto extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
+        txtNomeCripto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtNomeCripto.setForeground(new java.awt.Color(0, 0, 0));
         txtNomeCripto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,6 +185,7 @@ public class CompraCripto extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cotação Atual:");
 
+        txtQuantidadeReais.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtQuantidadeReais.setForeground(new java.awt.Color(0, 0, 0));
         txtQuantidadeReais.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtQuantidadeReais.addActionListener(new java.awt.event.ActionListener() {
@@ -198,6 +202,7 @@ public class CompraCripto extends javax.swing.JFrame {
             }
         });
 
+        txtCpf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfActionPerformed(evt);
@@ -221,6 +226,7 @@ public class CompraCripto extends javax.swing.JFrame {
         jLabel6.setText("Nome da Criptomoeda:");
 
         txtMoedas.setBackground(new java.awt.Color(51, 51, 51));
+        txtMoedas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtMoedas.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(txtMoedas);
 

@@ -4,10 +4,6 @@
  */
 package Model;
 
-/**
- *
- * @author rafae
- */
 public class Usuario {
     
     private String nome, cpf,senha,cripto;

@@ -33,6 +33,8 @@ public class UsuarioDAO {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     String dataHoraFormatada = dataHoraAtual.format(formatter);
     
+    
+    
     public double saldoAtual(Usuario user)throws SQLException{
         
         String sql = "select * from carteira where cpf = ?";
@@ -205,7 +207,7 @@ public class UsuarioDAO {
     return extrato.toString();
 }
 
-private Map<String, Double> saldoAtualTodasMoedas(Usuario user) throws SQLException {
+    private Map<String, Double> saldoAtualTodasMoedas(Usuario user) throws SQLException {
     Map<String, Double> saldoMoedas = new HashMap<>();
 
     String sql = "SELECT * FROM carteira WHERE cpf = ?";
@@ -227,13 +229,6 @@ private Map<String, Double> saldoAtualTodasMoedas(Usuario user) throws SQLExcept
 
     return saldoMoedas;
 }
-
-
-
-
-
-
-
 
     
     public Double valorMoeda(Moedas moeda) throws SQLException{
