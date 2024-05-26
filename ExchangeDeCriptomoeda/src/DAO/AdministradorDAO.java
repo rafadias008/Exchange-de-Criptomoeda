@@ -81,10 +81,7 @@ public class AdministradorDAO {
         conn.close();
     }
     
-    public void criarCripto(Moedas moeda) throws SQLException{
-        
-        
-        
+    public void criarCripto(Moedas moeda) throws SQLException{    
         String sql = "alter table carteira add "+moeda.getCripto() +" double precision not null default 0;\n" +
                         "\n" +
                         "INSERT INTO public.moedas(\n" +

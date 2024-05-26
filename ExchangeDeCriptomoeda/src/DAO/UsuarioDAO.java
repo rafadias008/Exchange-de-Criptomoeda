@@ -98,8 +98,7 @@ public class UsuarioDAO {
         return resultado;
         
     }
-    
-    
+   
     public void Deposito(Usuario user) throws SQLException{
         
         double valorAtual = saldoAtual(user);
@@ -169,30 +168,73 @@ public class UsuarioDAO {
         
     }
     
-    public String Extrato(Usuario user) throws SQLException{
-        
-        String sql = "SELECT * FROM public.extrato where cpf = ?";
-        
-        
-        
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1,user.getCpf());
-        ResultSet res = statement.executeQuery();
-        
-        StringBuilder extrato = new StringBuilder();
-        
-        while (res.next()) {
-            String linha = res.getString("data") + "  " + res.getString("tipodeoperacao")+
-                    "  " + res.getString("valor") + "  " + res.getString("moeda")+
-                    "  " + "CT: " + res.getString("ct") + "  " + "TX: " +  res.getString("taxa") + 
-                    "  " + "R$: " +res.getString("real") + "  " +" BTC: "+ res.getString("bitcoin")+
-                    "  " +"ETH: "+ res.getString("ethereum") + "  " +"XRP: "+ res.getString("ripple");
-            extrato.append(linha).append("\n\n");
+    public String Extrato(Usuario user) throws SQLException {
+    String sql = "SELECT * FROM public.extrato where cpf = ?";
+    PreparedStatement statement = conn.prepareStatement(sql);
+    statement.setString(1, user.getCpf());
+    ResultSet res = statement.executeQuery();
+
+    StringBuilder extrato = new StringBuilder();
+
+    // Obter o saldo de todas as moedas do cliente
+    Map<String, Double> saldoMoedas = saldoAtualTodasMoedas(user);
+    double saldoTotalReais = saldoAtual(user);
+
+    // Imprimir o extrato
+    while (res.next()) {
+        String linha = res.getString("data") + "  " + res.getString("tipodeoperacao") +
+                "  " + res.getString("valor") + "  " + res.getString("moeda") +
+                "  " + "TX: " + res.getString("taxa") +
+                "  " + "R$: " + res.getString("real") + "  ";
+
+        for (Map.Entry<String, Double> entry : saldoMoedas.entrySet()) {
+            linha += entry.getKey().toUpperCase() + ": " + entry.getValue() + " ";
         }
 
-        return extrato.toString();
-         
+        extrato.append(linha).append("\n\n");
     }
+
+    // Adicionar o saldo total de todas as moedas
+    extrato.append("\nSaldo Total: R$ ").append(saldoTotalReais);
+    for (Map.Entry<String, Double> entry : saldoMoedas.entrySet()) {
+        if (!entry.getKey().equalsIgnoreCase("reais")) {
+            extrato.append(", ").append(entry.getKey().toUpperCase()).append(": ").append(entry.getValue());
+        }
+    }
+
+    return extrato.toString();
+}
+
+private Map<String, Double> saldoAtualTodasMoedas(Usuario user) throws SQLException {
+    Map<String, Double> saldoMoedas = new HashMap<>();
+
+    String sql = "SELECT * FROM carteira WHERE cpf = ?";
+    PreparedStatement statement = conn.prepareStatement(sql);
+    statement.setString(1, user.getCpf());
+    ResultSet res = statement.executeQuery();
+
+    while (res.next()) {
+        saldoMoedas.put("reais", res.getDouble("reais"));
+
+        ResultSetMetaData metaData = res.getMetaData();
+        for (int i = 1; i <= metaData.getColumnCount(); i++) {
+            String columnName = metaData.getColumnName(i);
+            if (!columnName.equalsIgnoreCase("cpf") && !columnName.equalsIgnoreCase("reais")) {
+                saldoMoedas.put(columnName, res.getDouble(columnName));
+            }
+        }
+    }
+
+    return saldoMoedas;
+}
+
+
+
+
+
+
+
+
     
     public Double valorMoeda(Moedas moeda) throws SQLException{
         

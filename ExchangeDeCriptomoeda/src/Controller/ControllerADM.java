@@ -251,7 +251,7 @@ public class ControllerADM {
                 
             
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(CadCripto, "Criptomoeda já existente!");
+            JOptionPane.showMessageDialog(CadCripto, e);
             
             System.out.println(e);
         }

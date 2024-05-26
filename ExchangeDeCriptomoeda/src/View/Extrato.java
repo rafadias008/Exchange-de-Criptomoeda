@@ -74,6 +74,7 @@ public class Extrato extends javax.swing.JFrame {
         jLabel1.setAutoscrolls(true);
 
         txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCpf.setBorder(null);
         txtCpf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCpfKeyPressed(evt);
@@ -92,6 +93,8 @@ public class Extrato extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         ExibeExtrato.setBackground(new java.awt.Color(51, 51, 51));
         ExibeExtrato.setBorder(null);
         ExibeExtrato.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -100,6 +103,8 @@ public class Extrato extends javax.swing.JFrame {
         ExibeExtrato.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ExibeExtrato.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(ExibeExtrato);
+
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         ExibeInformacoes.setBackground(new java.awt.Color(51, 51, 51));
         ExibeInformacoes.setBorder(null);
@@ -320,10 +325,8 @@ public class Extrato extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        AtualizarCotCripto cotacaoCripto = new AtualizarCotCripto();
+        controlADM.atualizarCotacao();
 
-        cotacaoCripto.setVisible(true);
-        dispose();
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void btConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultaActionPerformed

@@ -110,7 +110,7 @@ public class Controller {
                 PU.setVisible(true);
                 
                 PU.getInforUser().setText("Nome: " +nome +
-                                              "\n\nCPF: " + cpf);
+                                              "\nCPF: " + cpf);
                 
                     
             } else {
@@ -156,7 +156,7 @@ public class Controller {
             
         }catch(SQLException e){
             e.printStackTrace();
-            JOptionPane.showMessageDialog(deposito, "Erro de conexão"
+            JOptionPane.showMessageDialog(deposito, e
                                ,"Erro",JOptionPane.ERROR_MESSAGE);
         }
     }

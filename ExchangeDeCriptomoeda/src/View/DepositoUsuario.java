@@ -303,10 +303,8 @@ public class DepositoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        AtualizarCotCripto cotacaoCripto = new AtualizarCotCripto();
+        control.atualizarCotacao();
 
-        cotacaoCripto.setVisible(true);
-        dispose();
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
