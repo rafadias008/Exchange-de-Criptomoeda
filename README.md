@@ -12,5 +12,5 @@ cotação das criptomoedas e alem disso, poder criar e excluir novas criptomoeda
   Projeto desenvolvido na estrutura MVC.
 
   Desenvolvidor por: 
-    Rafael Dias
+    Rafael Dias e 
     Kayky Pires
