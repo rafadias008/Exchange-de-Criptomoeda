@@ -40,6 +40,8 @@ public class SaqueUsuario extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
+        txtValorSaque.setBorder(null);
+
         btDeposito.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btDeposito.setText("Confirmar");
         btDeposito.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +49,8 @@ public class SaqueUsuario extends javax.swing.JFrame {
                 btDepositoActionPerformed(evt);
             }
         });
+
+        txtCPF.setBorder(null);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 30)); // NOI18N
@@ -69,6 +73,8 @@ public class SaqueUsuario extends javax.swing.JFrame {
         lblUsuario2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblUsuario2.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario2.setText("Senha:");
+
+        txtSenha.setBorder(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

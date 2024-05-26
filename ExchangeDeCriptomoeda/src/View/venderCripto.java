@@ -67,6 +67,8 @@ public class venderCripto extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Cotação Atual:");
 
+        txtQuantidadeCripto.setBackground(new java.awt.Color(51, 51, 51));
+        txtQuantidadeCripto.setForeground(new java.awt.Color(255, 255, 255));
         txtQuantidadeCripto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtQuantidadeCriptoActionPerformed(evt);
@@ -107,6 +109,9 @@ public class venderCripto extends javax.swing.JFrame {
         txtMoedas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtMoedas.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(txtMoedas);
+
+        txtNomeCripto.setBackground(new java.awt.Color(51, 51, 51));
+        txtNomeCripto.setForeground(new java.awt.Color(255, 255, 255));
 
         btConsultarSaldo.setText("Consultar saldo");
         btConsultarSaldo.addActionListener(new java.awt.event.ActionListener() {

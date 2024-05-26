@@ -67,6 +67,7 @@ public class DeletaInvest extends javax.swing.JFrame {
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setText("CPF:");
 
+        txtCpf.setBorder(null);
         txtCpf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCpfKeyPressed(evt);

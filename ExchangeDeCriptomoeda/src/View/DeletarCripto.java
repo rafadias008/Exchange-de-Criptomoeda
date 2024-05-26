@@ -58,6 +58,7 @@ public class DeletarCripto extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Deletar Criptomoeda");
 
+        txtNomeCripto.setBorder(null);
         txtNomeCripto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomeCriptoKeyPressed(evt);

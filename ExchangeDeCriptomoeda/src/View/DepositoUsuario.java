@@ -160,6 +160,7 @@ public class DepositoUsuario extends javax.swing.JFrame {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtValorDeposito.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtValorDeposito.setBorder(null);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -174,6 +175,7 @@ public class DepositoUsuario extends javax.swing.JFrame {
         });
 
         txtCPF.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtCPF.setBorder(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

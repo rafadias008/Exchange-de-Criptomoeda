@@ -76,12 +76,16 @@ public class ConsultaExtrato extends javax.swing.JFrame {
         jLabel5.setText("Extrato:");
         jLabel5.setAutoscrolls(true);
 
+        txtCPF.setBorder(null);
+
         jButton1.setText("Consultar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        txtSenha.setBorder(null);
 
         exibeExtrato.setEditable(false);
         exibeExtrato.setBackground(new java.awt.Color(51, 51, 51));

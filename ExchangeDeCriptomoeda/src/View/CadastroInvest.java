@@ -73,10 +73,14 @@ public class CadastroInvest extends javax.swing.JFrame {
             }
         });
 
+        txtNome.setBorder(null);
+
         lblNome.setBackground(new java.awt.Color(255, 255, 255));
         lblNome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNome.setForeground(new java.awt.Color(255, 255, 255));
         lblNome.setText("Nome:");
+
+        txtCpf.setBorder(null);
 
         lblUsuario.setBackground(new java.awt.Color(255, 255, 255));
         lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -87,6 +91,8 @@ public class CadastroInvest extends javax.swing.JFrame {
         lblSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblSenha.setForeground(new java.awt.Color(255, 255, 255));
         lblSenha.setText("Senha:");
+
+        txtSenha.setBorder(null);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 29)); // NOI18N
